@@ -1,15 +1,21 @@
+
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <!-- <img alt="Vue logo" src="./assets/logo.png">
+  <HelloWorld msg="Welcome to Your Vue.js App"/> -->
+    
+    <WeatherForecast/>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
 
+import WeatherForecast from '@/views/WeatherForecast.vue'
+// import HelloWorld from './components/HelloWorld.vue'
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    // HelloWorld
+    /* eslint-disable */
+    WeatherForecast
   }
 }
 </script>
