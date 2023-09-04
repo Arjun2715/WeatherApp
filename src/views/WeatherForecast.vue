@@ -1,62 +1,41 @@
 <template>
-    <div>
-
+  <div class="p-0 m-0  ">
+    <div class="flex w-full justify-center">
+      <div class="card w-[700px] h-96 ">
+      <div class="flex flex-row justify-center">
+        weather report
+      </div>
+        
     </div>
+    </div>
+  </div>
+ <!-- <div class="relative ">
+    <div class=" -z-50">
+       {{ this.getImages() }}
+      <img
+        class="absolute -translate-y-1/4 object-cover overflow-y-hidden "
+        src="https://images.unsplash.com/photo-1691672071535-b880995fb0e2?crop=entropy&cs=srgb&fm=jpg&ixid=M3w0OTYxODd8MHwxfHNlYXJjaHwxMHx8cmFpbiUyMHN0cm9tfGVufDB8fHx8MTY5Mzg1OTY3M3ww&ixlib=rb-4.0.3&q=85"
+        :alt="this.getImageUrl"
+      />
+      <div class="card w-[70%] m-20">
+        weather
+      </div>
+    </div>
+  </div>-->
 </template>
 <script>
-import axios from 'axios'
 
 export default {
-  name: 'WeatherForecast',
-  components: {
-  },
-  data() {
-    return {
-      data: null,
-    }
-  },
-  mounted() {
-    this.loadData();
-    this.getImages();
-  },
-  methods: {
-    
-    loadData() {
-      axios
-        .get("https://api.unsplash.com/search/photos/?client_id=oUd4FG2-casjWkPRoLWjbC1tic0Zgjyg3SDa7gSunlk&query=Rain Strom")
-        .then((response) => {
-          
-            this.data = response;
-            // console.log(this.data);
-          
-        })
-        .catch(() => {
-          console.error("ERROR");
-          // self.$router.push({ name: "Sign In" });
-        })
-        .finally(() => {
-          // this.loading = false;
-          setTimeout(() => {
-        this.getImages();
-      }, 500);
-        });
-    },
-    getImages(){
-      console.log(this.data);
-    },
-  },
-  
-}
+  name: "WeatherForecast",
+  components: {},
+};
 </script>
-
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-  overflow: hidden;
+.card {
+  backdrop-filter: blur(0px) saturate(180%);
+  -webkit-backdrop-filter: blur(0px) saturate(180%);
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 12px;
+  border: 1px solid rgba(209, 213, 219, 0.3);
 }
 </style>
