@@ -1,5 +1,7 @@
 <template>
-    <WeatherForecast/>
+  <div class="body overflow-hidden" :style="{ backgroundImage: `url('${getImageUrl}')` }">
+      <WeatherForecast/>
+  </div>
 </template>
 
 <script>
@@ -30,7 +32,7 @@ export default {
       // var weather = ["sunny", "cloudy", "windy", "rainy", "stormy"]
       axios
         .get(
-          "https://api.unsplash.com/search/photos/?client_id=oUd4FG2-casjWkPRoLWjbC1tic0Zgjyg3SDa7gSunlk&query=Rainy"
+          "https://api.unsplash.com/search/photos/?client_id=oUd4FG2-casjWkPRoLWjbC1tic0Zgjyg3SDa7gSunlk&query=windy"
         )
         .then((response) => {
           this.data = response.data.results;
@@ -57,8 +59,7 @@ export default {
 }
 </script>
 <style>
-body {
-    background-image: url('https://images.unsplash.com/photo-1691672071535-b880995fb0e2?crop=entropy&cs=srgb&fm=jpg&ixid=M3w0OTYxODd8MHwxfHNlYXJjaHwxMHx8cmFpbiUyMHN0cm9tfGVufDB8fHx8MTY5Mzg1OTY3M3ww&ixlib=rb-4.0.3&q=85');
+.body {
     background-position: center;
     background-size: cover; 
     background-repeat: no-repeat;
