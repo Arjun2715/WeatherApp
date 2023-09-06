@@ -30,23 +30,23 @@ export default {
       // const randomIndex = Math.floor(Math.random() * this.data.length);
 
       // var weather = ["sunny", "cloudy", "windy", "rainy", "stormy"]
-      axios
-        .get(
-          "https://api.unsplash.com/search/photos/?client_id=oUd4FG2-casjWkPRoLWjbC1tic0Zgjyg3SDa7gSunlk&query=windy"
-        )
-        .then((response) => {
-          this.data = response.data.results;
-          // console.log(this.data);
-        })
-        .catch(() => {
-          console.error("ERROR");
-          // self.$router.push({ name: "Sign In" });
-        })
-        .finally(() => {
-          // this.loading = false;
+        axios
+          .get(
+            "https://api.unsplash.com/search/photos/?client_id=oUd4FG2-casjWkPRoLWjbC1tic0Zgjyg3SDa7gSunlk&query=cloudy"
+          )
+          .then((response) => {
+            this.data = response.data.results;
+            // console.log(this.data);
+          })
+          .catch(() => {
+            console.error("ERROR");
+            // self.$router.push({ name: "Sign In" });
+          })
+          .finally(() => {
+            // this.loading = false;
 
-          this.getImages();
-        });
+            this.getImages();
+          });
     },
     getImages() {
       const randomIndex = Math.floor(Math.random() * this.data.length);

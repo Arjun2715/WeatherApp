@@ -4,9 +4,9 @@
       <div class="card m-20 w-[1720px]">
         <div class="flex flex-row">
           <div class="h-[500px]">
-            <SideBar />
+            <SideBar :data="this.data" />
           </div>
-          <div class="flex flex-col grow">
+          <div class="flex flex-col grow px-20">
             <div class="w-full p-5 mt-20">
               <p class="text-2xl text-cyan-50">WeatherForecast</p>
             </div>
@@ -81,7 +81,7 @@
               </div>
             </div>
             <div>
-              <button class="card p-2 ">
+              <button class="card p-2 m-2">
                 <div class="flex flex-row">
                   <p class="text-white">See Details</p>
                   <svg
@@ -111,15 +111,17 @@
               </button>
             </div>
             <div class="mt-5">
-              <TempGraph />
+              <TempGraph  :data="this.data" />
             </div>
           </div>
         </div>
+        <!-- {{ this.data }} -->
       </div>
     </div>
   </div>
 </template>
 <script>
+import axios from "axios";
 import SideBar from "@/components/SideBar.vue";
 import TempGraph from "@/components/TempGraph.vue";
 
@@ -129,6 +131,34 @@ export default {
     SideBar,
     TempGraph,
   },
+  data() {
+    return {
+      data: null,
+    };
+  },
+  mounted() {
+     this.loadData();
+  },
+  methods: {
+    loadData() {
+      // var city = "Barcelona"
+      axios
+        .get(
+          "https://api.weatherapi.com/v1/forecast.json?key=804c0854fbe7434bbc3123537233008&q=Barcelona&days=1&aqi=yes&alerts=yes"
+        )
+        .then((response) => {
+          this.data = response.data;
+          console.log(this.data);
+        })
+        .catch(() => {
+          console.error("ERROR");
+          // self.$router.push({ name: "Sign In" });
+        })
+        .finally(() => {
+          // this.loading = false;
+        });
+    }
+  }
 };
 </script>
 <style>

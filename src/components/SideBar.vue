@@ -1,22 +1,93 @@
 <template>
-  <div class="card h-full">
+  <div class="card grow text-white">
     <div class="flex flex-col">
-      <div class="flex-initial w-[400px] pt-5 ">
-        <div class="input-container ">
+      <div class="flex-initial w-[400px] h-full pt-2">
+        <div class="input-container">
           <input placeholder="Enter text" class="input-field" type="text" />
           <label for="input-field" class="input-label">Enter a city</label>
           <span class="input-highlight"></span>
+        </div>
+      </div>
+      <div class="h-[150px] p-4">data here</div>
+      <div class="bg-[#FFFFFF10] rounded-[30px] p-4 h-[100px] mb-1">
+        <div class="flex flex-col">
+          <div>wind spee & direction</div>
+          <div>wind_dir</div>
+        </div>
+      </div>
+      <div class="bg-[#FFFFFF10] rounded-[30px] p-4 h-[100px] mb-1">
+        <div class="flex flex-row">
+          <div class="flex flex-col">
+            <label for="">sunrise</label>
+            <label for="">sunset</label>
+          </div>
+          <div></div>
+        </div>
+      </div>
+      <div class="bg-[#FFFFFF10] rounded-[30px] p-4 h-[300px] flex flex-col">
+        <div class="flex flex-row">
+          <label class="flex-1"> Humidity </label>
+          <label for="">{{ this.data.current.humidity }}%</label>
+        </div>
+        <hr />
+        <div class="flex flex-row">
+          <label class="flex-1"> Chance of Rain </label>
+          <label for="">{{ this.data.current.humidity }} null change at time H</label>
+        </div>
+        <hr />
+        <div class="flex flex-row">
+          <label class="flex-1"> UV </label>
+          <label for="">{{ this.data.current.uv }}</label>
+        </div>
+        <hr />
+        <div class="flex flex-row">
+          <label class="flex-1"> Feelslike </label>
+          <label for="">{{ this.data.current.feelslike_c }}º C</label>
+        </div>
+        <hr />
+        <div class="flex flex-row">
+          <label class="flex-1"> Pressure </label>
+          <label for="">{{ this.data.current.pressure_mb }} Bar</label>
+        </div>
+        <hr />
+        <div class="flex flex-row">
+          <label class="flex-1"> Windchill</label>
+          <label for="">{{ this.data.current.humidity }}null change at time H</label>
+        </div>
+        <hr />
+        <div class="flex flex-row">
+          <label class="flex-1"> Wind Gust</label>
+          <label for="">{{ this.data.current.gust_kph }} kph</label>
+        </div>
+        <hr />
+        <div class="flex flex-row">
+          <label class="flex-1"> Clouds</label>
+          <label for="">{{ this.data.current.cloud }}%</label>
+        </div>
+        <hr />
+        <div class="flex flex-row">
+          <label class="flex-1"> Heatindex</label>
+          <label for="">{{ this.data.current.humidity }}null change at time H</label>
+        </div>
+        <hr />
+        <div class="flex flex-row">
+          <label class="flex-1"> Visibility</label>
+          <label for="">{{ this.data.current.vis_km }} Km</label>
         </div>
       </div>
     </div>
   </div>
 </template>
 <script>
-export default {};
+export default {
+  props: {
+    data: Object,
+  },
+};
 </script>
 <style>
 .card {
-  background-color: rgba(255, 255, 255, 0.7);
+  background-color: rgba(255, 255, 255, 0.4);
   border-radius: 32px;
 }
 
@@ -70,5 +141,7 @@ export default {};
 .input-field:focus + .input-label + .input-highlight {
   width: 100%;
 }
-
+hr {
+  opacity: 20%;
+}
 </style>
