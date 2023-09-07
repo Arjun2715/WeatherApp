@@ -78,7 +78,7 @@
         <div class="flex flex-row">
           <label class="flex-1"> Chance of Rain </label>
           <label for=""
-            >{{ this.data.current.humidity }} null change at time H</label
+            >{{ this.data.current.precip_mm }}</label
           >
         </div>
         <hr />

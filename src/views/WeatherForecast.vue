@@ -18,7 +18,13 @@
             <div class="w-full p-5 flex">
               <img :src="this.data.current.condition.icon" alt="">
               <p class="text-xl text-cyan-50 flex  self-center">
-                Spain, Barcelona, Friday, 3 Sep, 2023 8:45AM
+              {{ this.data.location.name }},
+              {{ this.data.location.region }},
+              {{ this.data.location.country }}
+              {{ this.data.location.localtime }}
+              {{ this.data.current.condition.last_updated }}
+
+                <!-- Spain, Barcelona, Friday, 3 Sep, 2023 8:45AM  last_updated location -->
               </p>
             </div>
             <div class="p-5 w-[70%]">
