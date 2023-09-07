@@ -53,18 +53,20 @@
         </div>
       </div>
       <div class="bg-[#FFFFFF10] rounded-[30px] p-4 h-[100px] mb-1">
-        <div class="flex flex-row">
+        <div class="flex flex-row justify-between">
           <div class="flex flex-col">
-            <div>
-              <label for="">sunrise</label>
-              <label for="">{{ this.data.current.humidity }}</label>
+            <div class="flex flex-row justify-between">
+              <label class="mr-4">sunrise</label>
+              <label for="">{{ this.data.forecast.forecastday[0].astro.sunrise }}</label>
             </div>
-            <div>
-              <label for="">sunset</label>
-              <label for="">{{ this.data.current.humidity }}</label>
+            <div class="flex flex-row">
+              <label class="mr-4">sunset</label>
+              <label for="">{{ this.data.forecast.forecastday[0].astro.sunset }}</label>
             </div>
           </div>
-          <div></div>
+          <div>
+            sun position here
+          </div>
         </div>
       </div>
       <div class="bg-[#FFFFFF10] rounded-[30px] p-4 h-[300px] flex flex-col">
