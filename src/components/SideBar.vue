@@ -4,17 +4,30 @@
       <div class="flex-initial w-[400px] h-full pt-3">
         <div class="input-container">
           <input placeholder="Enter text" class="input-field" type="text" />
-          <label for="input-field" class="input-label">{{ this.data.city }}</label>
+          <label for="input-field" class="input-label">{{
+            this.data.city
+          }}</label>
           <span class="input-highlight"></span>
         </div>
       </div>
-      <div class="h-[150px] p-4 pt-7"><p class="text-6xl">
-        {{ this.data.current.temp_c }}º
-      </p></div>
+      <div class="h-[150px] p-4 pt-7">
+        <p class="text-6xl">{{ this.data.current.temp_c }}º</p>
+      </div>
       <div class="bg-[#FFFFFF10] rounded-[30px] p-4 h-[100px] mb-1">
-        <div class="flex flex-col">
-          <div>wind spee & direction</div>
-          <div>wind_dir</div>
+        <div class="flex flex-row justify-between">
+          <div>
+            <div class="flex">
+            <label class="mr-4">Wind Speed</label>
+            <label for="">{{ this.data.current.wind_kph }}km/h</label>
+          </div>
+          <div class="flex ">
+            <label class="mr-4">Wind Direction</label>
+            <label for="">{{ this.data.current.wind_dir }}</label>
+          </div>
+          </div>
+          <div>
+            direcction
+          </div>
         </div>
       </div>
       <div class="bg-[#FFFFFF10] rounded-[30px] p-4 h-[100px] mb-1">
@@ -34,7 +47,9 @@
         <hr />
         <div class="flex flex-row">
           <label class="flex-1"> Chance of Rain </label>
-          <label for="">{{ this.data.current.humidity }} null change at time H</label>
+          <label for=""
+            >{{ this.data.current.humidity }} null change at time H</label
+          >
         </div>
         <hr />
         <div class="flex flex-row">
@@ -49,12 +64,14 @@
         <hr />
         <div class="flex flex-row">
           <label class="flex-1"> Pressure </label>
-          <label for="">{{ this.data.current.pressure_mb }} Bar</label>
+          <label for="">{{ this.data.current.pressure_mb }} mBar</label>
         </div>
         <hr />
         <div class="flex flex-row">
           <label class="flex-1"> Windchill</label>
-          <label for="">{{ this.data.current.humidity }}null change at time H</label>
+          <label for=""
+            >{{ this.data.current.humidity }}null change at time H</label
+          >
         </div>
         <hr />
         <div class="flex flex-row">
@@ -69,7 +86,9 @@
         <hr />
         <div class="flex flex-row">
           <label class="flex-1"> Heatindex</label>
-          <label for="">{{ this.data.current.humidity }}null change at time H</label>
+          <label for=""
+            >{{ this.data.current.humidity }}null change at time H</label
+          >
         </div>
         <hr />
         <div class="flex flex-row">
@@ -85,12 +104,11 @@ export default {
   props: {
     data: Object,
   },
-  data(){
+  data() {
     return {
-        city: "Barcelona",
-
-    }
-  }
+      city: "Barcelona",
+    };
+  },
 };
 </script>
 <style>
