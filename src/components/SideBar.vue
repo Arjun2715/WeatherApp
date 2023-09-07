@@ -1,14 +1,16 @@
 <template>
   <div class="card grow text-white">
-    <div class="flex flex-col">
-      <div class="flex-initial w-[400px] h-full pt-2">
+    <div class="flex flex-col h-full grow">
+      <div class="flex-initial w-[400px] h-full pt-3">
         <div class="input-container">
           <input placeholder="Enter text" class="input-field" type="text" />
-          <label for="input-field" class="input-label">Enter a city</label>
+          <label for="input-field" class="input-label">{{ this.data.city }}</label>
           <span class="input-highlight"></span>
         </div>
       </div>
-      <div class="h-[150px] p-4">data here</div>
+      <div class="h-[150px] p-4 pt-7"><p class="text-6xl">
+        {{ this.data.current.temp_c }}º
+      </p></div>
       <div class="bg-[#FFFFFF10] rounded-[30px] p-4 h-[100px] mb-1">
         <div class="flex flex-col">
           <div>wind spee & direction</div>
@@ -83,6 +85,12 @@ export default {
   props: {
     data: Object,
   },
+  data(){
+    return {
+        city: "Barcelona",
+
+    }
+  }
 };
 </script>
 <style>
@@ -127,7 +135,7 @@ export default {
   left: 0;
   height: 2px;
   width: 0;
-  background-color: #007bff;
+  background-color: #2c2c2c;
   transition: all 0.3s ease;
 }
 
