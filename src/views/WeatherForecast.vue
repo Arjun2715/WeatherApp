@@ -1,7 +1,9 @@
 <template>
-  <div class="relative">
-    <div class="absolute">
-      <div class="card m-20 w-[1720px]">
+  <div>
+    <div v-if="!this.loading" class="relative">
+    <div class="absolute ">
+      <div>
+        <div class="card m-20 w-[1730px] ">
         <div class="flex flex-row">
           <div class="h-[500px]">
             <SideBar :data="this.data" />
@@ -11,60 +13,11 @@
               <p class="text-2xl text-cyan-50">WeatherForecast</p>
             </div>
             <div class="text-6xl text-cyan-50 p-5">
-              Storm <br />
-              Heavy with Rain
+              {{ this.data.current.condition.text }}
             </div>
             <div class="w-full p-5 flex">
-              <svg
-                class="mr-2"
-                width="24px"
-                height="24px"
-                viewBox="0 0 24 24"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-                stroke="#ffffff"
-              >
-                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                <g
-                  id="SVGRepo_tracerCarrier"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                ></g>
-                <g id="SVGRepo_iconCarrier">
-                  <path
-                    d="M22 13.3529C22 15.2939 21.0091 17.0061 19.5 18.0226M14.381 8.02721C14.9767 7.81911 15.6178 7.70588 16.2857 7.70588C16.9404 7.70588 17.5693 7.81468 18.1551 8.01498M7.11616 10.6089C6.8475 10.5567 6.56983 10.5294 6.28571 10.5294C3.91878 10.5294 2 12.4256 2 14.7647C2 16.0746 2.60178 17.2457 3.54704 18.0226M7.11616 10.6089C6.88706 9.9978 6.7619 9.33687 6.7619 8.64706C6.7619 5.52827 9.32028 3 12.4762 3C15.4159 3 17.8371 5.19371 18.1551 8.01498M7.11616 10.6089C7.68059 10.7184 8.20528 10.9374 8.66667 11.2426M18.1551 8.01498C18.8381 8.24853 19.4623 8.60648 20 9.06141"
-                    stroke="#ffffff"
-                    stroke-width="1.5"
-                    stroke-linecap="round"
-                  ></path>
-                  <path
-                    d="M17 19L15 21"
-                    stroke="#ffffff"
-                    stroke-width="1.5"
-                    stroke-linecap="round"
-                  ></path>
-                  <path
-                    d="M15 15.5L13 17.5"
-                    stroke="#ffffff"
-                    stroke-width="1.5"
-                    stroke-linecap="round"
-                  ></path>
-                  <path
-                    d="M13 20L11 22"
-                    stroke="#ffffff"
-                    stroke-width="1.5"
-                    stroke-linecap="round"
-                  ></path>
-                  <path
-                    d="M6 22.3849L10.2857 18.6926H6L10.2857 15"
-                    stroke="#ffffff"
-                    stroke-width="1.5"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  ></path>
-                </g>
-              </svg>
-              <p class="text-xl text-cyan-50">
+              <img :src="this.data.current.condition.icon" alt="">
+              <p class="text-xl text-cyan-50 flex  self-center">
                 Spain, Barcelona, Friday, 3 Sep, 2023 8:45AM
               </p>
             </div>
@@ -117,7 +70,31 @@
         </div>
         <!-- {{ this.data }} -->
       </div>
+      </div>
     </div>
+  </div>
+  <div v-else class="flex flex-row justify-center">
+    <div class="wrapper">
+  <div class="cloud">
+    <div class="cloud_left"></div>
+    <div class="cloud_right"></div>
+  </div>
+  <div class="rain">
+    <div class="drop"></div>
+    <div class="drop"></div>
+    <div class="drop"></div>
+    <div class="drop"></div>
+    <div class="drop"></div>
+  </div>
+  <div class="surface">
+    <div class="hit"></div>
+    <div class="hit"></div>
+    <div class="hit"></div>
+    <div class="hit"></div>
+    <div class="hit"></div>
+  </div>
+</div>
+  </div>
   </div>
 </template>
 <script>
@@ -134,6 +111,7 @@ export default {
   data() {
     return {
       data: null,
+      loading: true,
     };
   },
   mounted() {
@@ -155,7 +133,7 @@ export default {
           // self.$router.push({ name: "Sign In" });
         })
         .finally(() => {
-          // this.loading = false;
+         this.loading = false;
         });
     }
   }
@@ -166,5 +144,149 @@ export default {
   background-color: rgba(24, 24, 24, 0.4);
   border-radius: 32px;
   border: 1px solid rgba(24, 24, 24, 0.4);
+}
+
+.wrapper {
+  height: 200px;
+}
+
+.cloud {
+  overflow: hidden;
+  padding: 5px;
+  height: 50px;
+}
+
+.cloud_left {
+  position: relative;
+  float: left;
+  background-color: #234;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.75);
+}
+
+.cloud_right {
+  position: relative;
+  float: left;
+  background-color: #203040;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  top: 15px;
+  left: -30px;
+  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.75);
+}
+
+.rain {
+  width: 180px;
+  height: 140px;
+}
+
+.drop {
+  position: relative;
+  float: left;
+  width: 2px;
+  margin: 10px;
+  left: 20px;
+  background: #789;
+  box-shadow: 1px 0.5px 1px 0.5px rgba(0, 0, 0, 0.75);
+  animation: rain_401 0.8s infinite ease-out;
+}
+
+.drop:nth-child(1) {
+  height: 15px;
+  top: 5px;
+  animation-delay: -1.0s;
+}
+
+.drop:nth-child(2) {
+  height: 20px;
+  animation-delay: -1.4s;
+}
+
+.drop:nth-child(3) {
+  height: 15px;
+  top: 5px;
+  animation-delay: -1.6s;
+}
+
+.drop:nth-child(4) {
+  height: 10px;
+  top: 10px;
+  animation-delay: -1.2s;
+}
+
+.drop:nth-child(5) {
+  height: 5px;
+  top: 15px;
+  animation-delay: -1.6s;
+}
+
+@keyframes rain_401 {
+  0% {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+
+  100% {
+    opacity: 0.2;
+    transform: translate(0, 100px);
+  }
+}
+
+.surface {
+  position: relative;
+  width: 180px;
+  height: 140px;
+  top: -140px;
+}
+
+.hit {
+  position: absolute;
+  width: 3px;
+  height: 1px;
+  margin: 10px;
+  bottom: -5px;
+  border: 1px solid #456;
+  border-radius: 50%;
+  animation: hit_401 0.8s infinite ease;
+}
+
+.hit:nth-child(1) {
+  left: 19px;
+  animation-delay: -0.3s;
+}
+
+.hit:nth-child(2) {
+  left: 41px;
+  animation-delay: -0.7s;
+}
+
+.hit:nth-child(3) {
+  left: 63px;
+  animation-delay: -0.9s;
+}
+
+.hit:nth-child(4) {
+  left: 85px;
+  animation-delay: -0.5s;
+}
+
+.hit:nth-child(5) {
+  left: 107px;
+  animation-delay: -0.9s;
+}
+
+@keyframes hit_401 {
+  0% {
+    opacity: 0.75;
+    transform: scale(1);
+  }
+
+  100% {
+    opacity: 0;
+    transform: scale(2.5);
+  }
 }
 </style>
