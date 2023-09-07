@@ -2,7 +2,7 @@
   <div>
     <div v-if="!this.loading" class="body overflow-hidden" :style="{ backgroundImage: `url('${getImageUrl}')` }">
       <WeatherForecast/>
-      {{ this.data.current.condition.text }}
+      <!-- {{ this.data.current.condition.text }} -->
   </div>
   <div v-else>
     <div class="wrapper">
@@ -47,7 +47,7 @@ export default {
       getImageUrl: "",
       loading: true,
       imagePrompt: "",
-
+      dayOrNight: "",
 
     };
   },
@@ -61,12 +61,18 @@ export default {
     
     loadData() {
       this.imagePrompt = this.data.current.condition.text;
+      
+      if(this.data.current.is_day){
+        this.dayOrNight="Day";
+      }else{
+        this.dayOrNight="Night";
+      }
       // const randomIndex = Math.floor(Math.random() * this.data.length);
 
       // var weather = ["sunny", "cloudy", "windy", "rainy", "stormy"]
         axios
           .get(
-            "https://api.unsplash.com/search/photos/?client_id=oUd4FG2-casjWkPRoLWjbC1tic0Zgjyg3SDa7gSunlk&query="+this.imagePrompt
+            "https://api.unsplash.com/search/photos/?client_id=oUd4FG2-casjWkPRoLWjbC1tic0Zgjyg3SDa7gSunlk&query="+this.imagePrompt+" "+this.dayOrNight
           )
           .then((response) => {
             this.imgData = response.data.results;

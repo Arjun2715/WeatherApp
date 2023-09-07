@@ -17,24 +17,52 @@
         <div class="flex flex-row justify-between">
           <div>
             <div class="flex">
-            <label class="mr-4">Wind Speed</label>
-            <label for="">{{ this.data.current.wind_kph }}km/h</label>
-          </div>
-          <div class="flex ">
-            <label class="mr-4">Wind Direction</label>
-            <label for="">{{ this.data.current.wind_dir }}</label>
-          </div>
+              <label class="mr-4">Wind Speed</label>
+              <label for="">{{ this.data.current.wind_kph }}km/h</label>
+            </div>
+            <div class="flex">
+              <label class="mr-4">Wind Direction</label>
+              <label for="">{{ this.data.current.wind_dir }}</label>
+            </div>
           </div>
           <div>
-            direcction
+            <svg
+              width="64px"
+              height="64px"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+              <g
+                id="SVGRepo_tracerCarrier"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              ></g>
+              <g id="SVGRepo_iconCarrier">
+                <path
+                  d="M15 13.5V9M15 9H10.5M15 9L9.00019 14.9999M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z"
+                  stroke="#ffffff"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                ></path>
+              </g>
+            </svg>
           </div>
         </div>
       </div>
       <div class="bg-[#FFFFFF10] rounded-[30px] p-4 h-[100px] mb-1">
         <div class="flex flex-row">
           <div class="flex flex-col">
-            <label for="">sunrise</label>
-            <label for="">sunset</label>
+            <div>
+              <label for="">sunrise</label>
+              <label for="">{{ this.data.current.humidity }}</label>
+            </div>
+            <div>
+              <label for="">sunset</label>
+              <label for="">{{ this.data.current.humidity }}</label>
+            </div>
           </div>
           <div></div>
         </div>
@@ -141,7 +169,7 @@ export default {
   top: 0;
   left: 0;
   font-size: 16px;
-  color: rgba(204, 204, 204, 0);
+  color: rgb(204, 204, 204);
   pointer-events: none;
   transition: all 0.3s ease;
 }
