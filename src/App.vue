@@ -95,7 +95,7 @@ export default {
         )
         .then((response) => {
           this.data = response.data;
-          console.log(this.data);
+          // console.log(this.data);
         })
         .catch(() => {
           console.error("ERROR");
