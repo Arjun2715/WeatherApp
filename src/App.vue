@@ -48,6 +48,7 @@ export default {
       loading: true,
       imagePrompt: "",
       dayOrNight: "",
+      region: "",
 
     };
   },
@@ -55,7 +56,7 @@ export default {
     this.loadDataForecast();
     setTimeout(() => {
     this.loadData();
-    }, "100");
+    }, "500");
   },
   methods: {
     
@@ -67,12 +68,11 @@ export default {
       }else{
         this.dayOrNight="Night";
       }
-      // const randomIndex = Math.floor(Math.random() * this.data.length);
-
-      // var weather = ["sunny", "cloudy", "windy", "rainy", "stormy"]
+      
+      this.region = this.data.location.country;
         axios
           .get(
-            "https://api.unsplash.com/search/photos/?client_id=oUd4FG2-casjWkPRoLWjbC1tic0Zgjyg3SDa7gSunlk&query="+this.imagePrompt+" "+this.dayOrNight
+            "https://api.unsplash.com/search/photos/?client_id=oUd4FG2-casjWkPRoLWjbC1tic0Zgjyg3SDa7gSunlk&query="+this.imagePrompt+" "+this.dayOrNight //+" in Barcelona" // + this.region
           )
           .then((response) => {
             this.imgData = response.data.results;
@@ -80,7 +80,6 @@ export default {
           })
           .catch(() => {
             console.error("ERROR");
-            // self.$router.push({ name: "Sign In" });
           })
           .finally(() => {
             this.loading = false;
@@ -99,7 +98,6 @@ export default {
         })
         .catch(() => {
           console.error("ERROR");
-          // self.$router.push({ name: "Sign In" });
         })
         .finally(() => {
           this.loading = false;

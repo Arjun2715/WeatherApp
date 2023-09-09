@@ -1,45 +1,70 @@
 <template>
-  <div class="h-[200px] w-full text-white">
+  <div class=" text-white">
+
+    <vue-custom-scrollbar
+      class="scroll-area"
+      :settings="settings"
+      @ps-scroll-x="scrollHanle"
+    >
     <div class="">graph here</div>
-    <div class="">graph temp here</div>
-    <div class="flex flex-row">
-      <div class="flex-1 w-30 h-30 rounded-2xl p-2 m-2">
-        <div class="flex flex-col">
-          <label class="text-6xl font-light self-center">22º</label>
-          <label class="self-center">Madrid</label>
+
+      <div class="flex flex-row h-auto overflow-hidden mr-4">
+        <div
+          v-for="(item, index) in this.data.forecast.forecastday[0].hour"
+          :key="index"
+          class=""
+        >
+          <div class="flex flex-col w-[200px] pr-6">
+            <label class="text-6xl font-light self-start"
+              >{{ item.temp_c }}ºC</label
+            >
+            <label class="self-start">{{ formatTimeFromDate(item.time) }}</label>
+          </div>
         </div>
       </div>
-      <div class="flex-1 w-30 h-30 rounded-2xl p-2 m-2">
-        <div class="flex flex-col">
-          <label class="text-6xl font-light self-center">25º</label>
-          <label class="self-center">canary Islands</label>
-        </div>
-      </div>
-      <div class="flex-1 w-30 h-30 rounded-2xl p-2 m-2">
-        <div class="flex flex-col">
-          <label class="text-6xl font-light self-center">18º</label>
-          <label class="self-center">Vigo</label>
-        </div>
-      </div>
-      <div class="flex-1 w-30 h-30 rounded-2xl p-2 m-2">
-        <div class="flex flex-col">
-          <label class="text-6xl font-light self-center">26º</label>
-          <label class="self-center">Sevilla</label>
-        </div>
-      </div>
-      <div class="flex-1 w-30 h-30 rounded-2xl p-2 m-2">
-        <div class="flex flex-col">
-          <label class="text-6xl font-light self-center">24º</label>
-          <label class="self-center">Valencia</label>
-        </div>
-      </div>
-    </div>
+    </vue-custom-scrollbar>
   </div>
 </template>
 <script>
+import vueCustomScrollbar from "vue-custom-scrollbar/src/vue-scrollbar.vue";
+
 export default {
-    props: {
-            data: Object,
-        }
+  component: {
+    vueCustomScrollbar,
+  },
+  props: {
+    data: Object, // this.data.forecast.forecastday[0].hour
+  },
+  methods: {
+    formatTimeFromDate(dateString) {
+      // Parse the date string into a Date object
+      const date = new Date(dateString);
+
+      // Extract the hours and minutes
+      const hours = date.getHours().toString().padStart(2, "0");
+      const minutes = date.getMinutes().toString().padStart(2, "0");
+
+      // Construct the time string in the HH:MM format
+      const timeString = `${hours}:${minutes}`;
+
+      return timeString;
+    },
+  },
+  data() {
+    return {
+      settings: {
+        suppressScrollY: false,
+        suppressScrollX: false,
+        wheelPropagation: false,
+      },
+    };
+  },
 };
 </script>
+<style>
+.scroll-area {
+  position: relative;
+  width: 1250px;
+  height: 350px;
+}
+</style>
