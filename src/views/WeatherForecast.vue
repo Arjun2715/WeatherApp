@@ -77,7 +77,7 @@
                   </button>
                 </div>
                 <div class="mt-5">
-                  <TempGraph :data="this.data" />
+                  <TempGraph :data="this.data"  />
                 </div>
               </div>
               <div class="p-2">

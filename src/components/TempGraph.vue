@@ -1,29 +1,30 @@
 <template>
-  <div class=" text-white">
-
-    <vue-custom-scrollbar
-      class="scroll-area"
-      :settings="settings"
-      @ps-scroll-x="scrollHanle"
+  <div>
+    <div class="text-white w-full overflow-hidden overflow-x-scroll">
+      <div class="flex flex-row h-auto w-[850px] mr-4">
+        <vue-custom-scrollbar
+    class="scroll-area"
+    :settings="settings"
+    @ps-scroll-y="scrollHanle"
     >
-
-      <div class="overflow-hidden">
-        <div class="flex flex-row h-auto  mr-4">
         <div
           v-for="(item, index) in this.data.forecast.forecastday[0].hour"
           :key="index"
           class=""
         >
-          <div class="flex flex-col w-[200px] pr-6">
+          <div class="flex flex-col w-[200px]">
             <label class="text-6xl font-light self-start"
               >{{ item.temp_c }}ºC</label
             >
-            <label class="self-start">{{ formatTimeFromDate(item.time) }}</label>
+            <label class="self-start">{{
+              formatTimeFromDate(item.time)
+            }}</label>
           </div>
         </div>
+  </vue-custom-scrollbar>
+
       </div>
-      </div>
-    </vue-custom-scrollbar>
+    </div>
   </div>
 </template>
 <script>
@@ -36,6 +37,9 @@ export default {
     data: Object, // this.data.forecast.forecastday[0].hour
   },
   methods: {
+    scrollHanle(evt) {
+      console.log(evt);
+    },
     formatTimeFromDate(dateString) {
       // Parse the date string into a Date object
       const date = new Date(dateString);
@@ -54,7 +58,7 @@ export default {
     return {
       settings: {
         suppressScrollY: false,
-        suppressScrollX: false,
+        suppressScrollX: true,
         wheelPropagation: false,
       },
     };
@@ -64,7 +68,8 @@ export default {
 <style>
 .scroll-area {
   position: relative;
-  width: 1250px;
+  margin: auto;
+  width: 600px;
   height: 350px;
 }
 </style>
