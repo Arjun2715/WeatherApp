@@ -6,9 +6,9 @@
       :settings="settings"
       @ps-scroll-x="scrollHanle"
     >
-    <div class="">graph here</div>
 
-      <div class="flex flex-row h-auto overflow-hidden mr-4">
+      <div class="overflow-hidden">
+        <div class="flex flex-row h-auto  mr-4">
         <div
           v-for="(item, index) in this.data.forecast.forecastday[0].hour"
           :key="index"
@@ -22,12 +22,12 @@
           </div>
         </div>
       </div>
+      </div>
     </vue-custom-scrollbar>
   </div>
 </template>
 <script>
 import vueCustomScrollbar from "vue-custom-scrollbar/src/vue-scrollbar.vue";
-
 export default {
   component: {
     vueCustomScrollbar,
