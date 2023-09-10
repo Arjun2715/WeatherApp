@@ -52,7 +52,7 @@ export default {
       loading: true,
       imagePrompt: "",
       dayOrNight: "",
-      region: "",
+      location: "",
     };
   },
   mounted() {
@@ -64,6 +64,7 @@ export default {
   methods: {
     loadData() {
       this.imagePrompt = this.data.current.condition.text;
+      this.location = this.data.location.name;
 
       if (this.data.current.is_day) {
         this.dayOrNight = "Day";
@@ -77,7 +78,9 @@ export default {
           "https://api.unsplash.com/search/photos/?client_id=oUd4FG2-casjWkPRoLWjbC1tic0Zgjyg3SDa7gSunlk&query=" +
             this.imagePrompt +
             " " +
-            this.dayOrNight // +" in Spain weather" // + this.region
+            this.dayOrNight  +
+            " in "  + 
+            this.location
         )
         .then((response) => {
           this.imgData = response.data.results;

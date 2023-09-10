@@ -48,13 +48,13 @@
         <div class="flex flex-row justify-between">
           <div class="flex flex-col justify-between">
             <div class="flex flex-row justify-between">
-              <label class="mr-4">sunrise</label>
+              <label class="mr-4">Sunrise</label>
               <label class="whitespace-nowrap">{{
                 this.data.forecast.forecastday[0].astro.sunrise
               }}</label>
             </div>
             <div class="flex flex-row">
-              <label class="mr-4">sunset</label>
+              <label class="mr-4">Sunset</label>
               <label class="whitespace-nowrap">{{
                 this.data.forecast.forecastday[0].astro.sunset
               }}</label>
