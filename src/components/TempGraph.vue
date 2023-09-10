@@ -24,7 +24,7 @@
       <label for=""> 24-hour forecast</label>
     </div>
 
-    <div class="flex flex-row space-x-4 overflow-x-scroll">
+    <div class="flex flex-row space-x-10 overflow-x-scroll">
       <div
         v-for="(item, index) in data.forecast.forecastday[0].hour"
         :key="index"
