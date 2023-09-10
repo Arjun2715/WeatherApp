@@ -1,16 +1,8 @@
 <template>
   <div class="card rounded-3xl text-white">
     <div class="flex flex-col">
-      <div class="w-auto md:min-w-[280px] sm:min-w-[280px] pt-3">
-        <div class="input-container">
-          <input placeholder="Enter text" class="input-field" type="text" />
-          <label for="input-field" class="input-label">{{
-            this.data.city
-          }}</label>
-          <span class="input-highlight"></span>
-        </div>
-      </div>
-      <div class="h-[150px] p-4 pt-7">
+      <div class="w-auto md:min-w-[280px] sm:min-w-[280px] md:pt-3"></div>
+      <div class="hidden md:flex h-[150px] p-4 pt-7">
         <p class="text-6xl">{{ this.data.current.temp_c }}º</p>
       </div>
       <div class="bg-[#FFFFFF10] rounded-3xl p-4 h-[100px] mb-1">
@@ -76,14 +68,13 @@
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
             >
-            
-                <path
-                  d="M6 12L5 11M18 12L19 11M3 18H21M5 21H19M7 18C7 15.2386 9.23858 13 12 13C14.7614 13 17 15.2386 17 18M12 6V10M12  "
-                  stroke="#ffffff"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                ></path>
+              <path
+                d="M6 12L5 11M18 12L19 11M3 18H21M5 21H19M7 18C7 15.2386 9.23858 13 12 13C14.7614 13 17 15.2386 17 18M12 6V10M12  "
+                stroke="#ffffff"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              ></path>
             </svg>
           </div>
         </div>
@@ -96,7 +87,7 @@
         <hr />
         <div class="flex flex-row">
           <label class="flex-1"> Chance of Rain </label>
-          <label for="">{{ this.data.current.precip_mm }}</label>
+          <label for="">{{ this.data.current.precip_mm }}mm</label>
         </div>
         <hr />
         <div class="flex flex-row">

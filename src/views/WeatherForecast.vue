@@ -2,16 +2,19 @@
   <div class="">
     <div v-if="!this.loading" class="relative">
       <div class="absolute z-50 overflow-y-auto">
-        <div class="h-screen w-screen  md:overflow-hidden">
-          <div class="card md:rounded-3xl lg:m-20  md:m-10 sm:m-5 ">
+        <div class="h-screen w-screen md:overflow-hidden">
+          <div class="card sm:rounded-3xl lg:m-20 md:m-10 sm:m-5">
             <div class="grow">
-              <div class="sm:flex flex-row">
-                  <SideBar :data="this.data" />
+              <div class="sm:flex flex-row-reverse">
                 <div class="flex flex-col grow lg:px-20">
                   <div class="w-full p-5 mt-20">
                     <p class="text-2xl text-cyan-50">Weather Forecast</p>
                   </div>
                   <div class="text-6xl text-cyan-50 p-5">
+                    <p class="md:hidden text-6xl">
+                      {{ this.data.current.temp_c }}º
+                    </p>
+
                     {{ this.data.current.condition.text }}
                   </div>
                   <div class="w-full p-5 flex">
@@ -26,7 +29,7 @@
                       <!-- Spain, Barcelona, Friday, 3 Sep, 2023 8:45AM  last_updated location -->
                     </p>
                   </div>
-                  <div class="p-5 ">
+                  <div class="p-5">
                     <div class="text-lg text-cyan-50">
                       <div>
                         {{ this.data.current.condition.text }}
@@ -45,13 +48,15 @@
                       </div>
                     </div>
                   </div>
-                  <div  class="p-5 ">
+                  <div class="p-5">
                     <button class="card rounded-3xl p-2 w-auto">
                       <div class="flex flex-row">
-                        <p class="text-white md:text-bas whitespace-nowrap">See Details</p>
+                        <p class="text-white md:text-bas whitespace-nowrap">
+                          See Details
+                        </p>
                         <svg
-                        width="24px"
-                        height="24px"
+                          width="24px"
+                          height="24px"
                           viewBox="0 0 24 24"
                           fill="none"
                           xmlns="http://www.w3.org/2000/svg"
@@ -79,29 +84,7 @@
                     <TempGraph :data="this.data" />
                   </div>
                 </div>
-                <!-- <div class="p-2">
-                   <button class="">
-                  <svg
-                    fill="#FFFFFF60"
-                    width="34px"
-                    height="34px"
-                    viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                    <g
-                      id="SVGRepo_tracerCarrier"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    ></g>
-                    <g id="SVGRepo_iconCarrier">
-                      <path
-                        d="M23,12A11,11,0,1,1,12,1a10.9,10.9,0,0,1,5.882,1.7l1.411-1.411A1,1,0,0,1,21,2V6a1,1,0,0,1-1,1H16a1,1,0,0,1-.707-1.707L16.42,4.166A8.9,8.9,0,0,0,12,3a9,9,0,1,0,9,9,1,1,0,0,1,2,0Z"
-                      ></path>
-                    </g>
-                  </svg>
-                </button> 
-                </div> -->
+                <SideBar :data="this.data" />
               </div>
             </div>
           </div>
