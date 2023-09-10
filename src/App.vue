@@ -2,7 +2,7 @@
   <div>
     <div
       v-if="!this.loading"
-      class="body md:overflow-hidden"
+      class="body overflow-hidden  "
       :style="{ backgroundImage: `url('${getImageUrl}')` }"
     >
       <WeatherForecast />

@@ -1,6 +1,25 @@
 <template>
-  <div>
-    <!-- <div class="text-white w-full overflow-hidden overflow-x-scroll">
+  <div class="text-white lg:w-[1000px] md:w-[600px] overflow-hidden px-4">
+    <vue-custom-scrollbar class="scroll-area"  :settings="settings" @ps-scroll-x="scrollHanle">
+
+    <div class="flex flex-row  overflow-x-scroll">
+      
+      <div
+        v-for="(item, index) in data.forecast.forecastday[0].hour"
+        :key="index"
+        class="flex flex-col w-[200px] px-6"
+      >
+        <img :src="item.icon" alt="" />
+        <label class="text-4xl font-light self-start"
+          >{{ item.temp_c }}ºC</label
+        >
+        <label class="self-start">{{ formatTimeFromDate(item.time) }}</label>
+    </div>
+      </div>
+    </vue-custom-scrollbar>
+  </div>
+
+  <!-- <div class="text-white w-full overflow-hidden overflow-x-scroll">
       <div class="flex flex-row h-auto w-[850px] mr-4">
         <vue-custom-scrollbar
     class="scroll-area"
@@ -25,7 +44,6 @@
 
       </div>
     </div> -->
-  </div>
 </template>
 <script>
 import vueCustomScrollbar from "vue-custom-scrollbar/src/vue-scrollbar.vue";
@@ -58,7 +76,7 @@ export default {
     return {
       settings: {
         suppressScrollY: false,
-        suppressScrollX: true,
+        suppressScrollX: false,
         wheelPropagation: false,
       },
     };
@@ -69,7 +87,7 @@ export default {
 .scroll-area {
   position: relative;
   margin: auto;
-  width: 600px;
+  width: 850px;
   height: 350px;
 }
 </style>

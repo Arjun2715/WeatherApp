@@ -1,7 +1,7 @@
 <template>
   <div class="">
     <div v-if="!this.loading" class="relative">
-      <div class="absolute z-50 overflow-y-auto">
+      <div class="absolute z-50 sm:overflow-y-auto overflow-x-scroll">
         <div class="h-screen w-screen md:overflow-hidden">
           <div class="card sm:rounded-3xl lg:m-20 md:m-10 sm:m-5">
             <div class="grow">
