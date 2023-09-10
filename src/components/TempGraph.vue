@@ -30,14 +30,6 @@
         :key="index"
         class="flex flex-col"
       >
-        <div id="chart">
-          <apexchart
-            type="line"
-            height="350"
-            :options="chartOptions"
-            :series="series"
-          ></apexchart>
-        </div>
         <img class="w-20" :src="item.condition.icon" alt="" />
         <label class="text-3xl w-[80px] font-light self-start"
           >{{ item.temp_c }}ºC</label
@@ -76,13 +68,11 @@
       </div>
     </div> -->
 </template>
-<script>
-import ApexCharts from "apexcharts";
+<script> 
 import vueCustomScrollbar from "vue-custom-scrollbar/src/vue-scrollbar.vue";
 export default {
   component: {
-    vueCustomScrollbar,
-    ApexCharts,
+    vueCustomScrollbar, 
   },
   props: {
     data: Object, // this.data.forecast.forecastday[0].hour

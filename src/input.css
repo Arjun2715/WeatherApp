@@ -3,6 +3,7 @@
 @tailwind utilities;
 
 .body {
+  user-select: none;
     background-position: center;
     background-size: cover; 
     background-repeat: no-repeat;
