@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="text-white w-full overflow-hidden overflow-x-scroll">
+    <!-- <div class="text-white w-full overflow-hidden overflow-x-scroll">
       <div class="flex flex-row h-auto w-[850px] mr-4">
         <vue-custom-scrollbar
     class="scroll-area"
@@ -24,7 +24,7 @@
   </vue-custom-scrollbar>
 
       </div>
-    </div>
+    </div> -->
   </div>
 </template>
 <script>

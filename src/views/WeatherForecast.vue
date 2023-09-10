@@ -1,87 +1,86 @@
 <template>
-  <div>
+  <div class="">
     <div v-if="!this.loading" class="relative">
-      <div class="absolute">
-        <div>
-          <div class="card m-20 w-[1730px]">
-            <div class="flex flex-row">
-              <div class="">
-                <SideBar :data="this.data" />
-              </div>
-              <div class="flex flex-col grow px-20">
-                <div class="w-full p-5 mt-20">
-                  <p class="text-2xl text-cyan-50">Weather Forecast</p>
-                </div>
-                <div class="text-6xl text-cyan-50 p-5">
-                  {{ this.data.current.condition.text }}
-                </div>
-                <div class="w-full p-5 flex">
-                  <img :src="this.data.current.condition.icon" alt="" />
-                  <p class="text-xl text-cyan-50 flex self-center">
-                    {{ this.data.location.name }},
-                    {{ this.data.location.region }},
-                    {{ this.data.location.country }}
-                    {{ this.date }}
-                    {{ this.time }}
+      <div class="absolute z-50 overflow-y-auto">
+        <div class="h-screen w-screen  md:overflow-hidden">
+          <div class="card md:rounded-3xl lg:m-20  md:m-10 sm:m-5 ">
+            <div class="grow">
+              <div class="sm:flex flex-row">
+                  <SideBar :data="this.data" />
+                <div class="flex flex-col grow lg:px-20">
+                  <div class="w-full p-5 mt-20">
+                    <p class="text-2xl text-cyan-50">Weather Forecast</p>
+                  </div>
+                  <div class="text-6xl text-cyan-50 p-5">
+                    {{ this.data.current.condition.text }}
+                  </div>
+                  <div class="w-full p-5 flex">
+                    <img :src="this.data.current.condition.icon" alt="" />
+                    <p class="text-xl text-cyan-50 flex self-center">
+                      {{ this.data.location.name }},
+                      {{ this.data.location.region }},
+                      {{ this.data.location.country }}
+                      {{ this.date }}
+                      {{ this.time }}
 
-                    <!-- Spain, Barcelona, Friday, 3 Sep, 2023 8:45AM  last_updated location -->
-                  </p>
-                </div>
-                <div class="p-5 w-[70%]">
-                  <div class="text-lg text-cyan-50">
-                    <div>
-                      {{ this.data.current.condition.text }}
-                      with {{ this.uvScale() }} <br />
-                      Temp {{ this.data.current.temp_c }}ºC,
-                      {{ this.tempScale() }} Winds
-                    </div>
-                    <div class="flex flex-row">
-                      <div class="text-5xl w-30 mr-1">
-                        {{ this.data.current.wind_degree }}º
+                      <!-- Spain, Barcelona, Friday, 3 Sep, 2023 8:45AM  last_updated location -->
+                    </p>
+                  </div>
+                  <div class="p-5 ">
+                    <div class="text-lg text-cyan-50">
+                      <div>
+                        {{ this.data.current.condition.text }}
+                        with {{ this.uvScale() }} <br />
+                        Temp {{ this.data.current.temp_c }}ºC,
+                        {{ this.tempScale() }} Winds
                       </div>
-                      <div class="mt-1">
-                        {{ this.data.current.wind_dir }} at an avg of
-                        {{ this.data.current.wind_kph }}km/h.
+                      <div class="flex flex-row">
+                        <div class="text-5xl w-30 mr-1">
+                          {{ this.data.current.wind_degree }}º
+                        </div>
+                        <div class="mt-1">
+                          {{ this.data.current.wind_dir }} at an avg of
+                          {{ this.data.current.wind_kph }}km/h.
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
-                <div>
-                  <button class="card p-2 m-2">
-                    <div class="flex flex-row">
-                      <p class="text-white">See Details</p>
-                      <svg
+                  <div  class="p-5 ">
+                    <button class="card rounded-3xl p-2 w-auto">
+                      <div class="flex flex-row">
+                        <p class="text-white md:text-bas whitespace-nowrap">See Details</p>
+                        <svg
                         width="24px"
                         height="24px"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                        <g
-                          id="SVGRepo_tracerCarrier"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                        ></g>
-                        <g id="SVGRepo_iconCarrier">
-                          <path
-                            d="M7 17L17 7M17 7H8M17 7V16"
-                            stroke="#ffffff"
-                            stroke-width="2"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                          <g
+                            id="SVGRepo_tracerCarrier"
                             stroke-linecap="round"
                             stroke-linejoin="round"
-                          ></path>
-                        </g>
-                      </svg>
-                    </div>
-                  </button>
+                          ></g>
+                          <g id="SVGRepo_iconCarrier">
+                            <path
+                              d="M7 17L17 7M17 7H8M17 7V16"
+                              stroke="#ffffff"
+                              stroke-width="2"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                            ></path>
+                          </g>
+                        </svg>
+                      </div>
+                    </button>
+                  </div>
+                  <div class="mt-5">
+                    <TempGraph :data="this.data" />
+                  </div>
                 </div>
-                <div class="mt-5">
-                  <TempGraph :data="this.data"  />
-                </div>
-              </div>
-              <div class="p-2">
-                <!-- <button class="">
+                <!-- <div class="p-2">
+                   <button class="">
                   <svg
                     fill="#FFFFFF60"
                     width="34px"
@@ -101,7 +100,8 @@
                       ></path>
                     </g>
                   </svg>
-                </button> -->
+                </button> 
+                </div> -->
               </div>
             </div>
           </div>

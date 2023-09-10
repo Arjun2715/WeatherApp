@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div v-if="!this.loading" class="body overflow-hidden" :style="{ backgroundImage: `url('${getImageUrl}')` }">
+    <div v-if="!this.loading" class="body md:overflow-hidden" :style="{ backgroundImage: `url('${getImageUrl}')` }">
       <WeatherForecast/>
       <!-- {{ this.data.current.condition.text }} -->
   </div>
@@ -72,7 +72,7 @@ export default {
       this.region = this.data.location.country;
         axios
           .get(
-            "https://api.unsplash.com/search/photos/?client_id=oUd4FG2-casjWkPRoLWjbC1tic0Zgjyg3SDa7gSunlk&query="+this.imagePrompt+" "+this.dayOrNight //+" in Barcelona" // + this.region
+            "https://api.unsplash.com/search/photos/?client_id=oUd4FG2-casjWkPRoLWjbC1tic0Zgjyg3SDa7gSunlk&query="+this.imagePrompt+" "+this.dayOrNight// +" in Spain weather" // + this.region
           )
           .then((response) => {
             this.imgData = response.data.results;
