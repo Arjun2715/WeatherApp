@@ -39,7 +39,7 @@
   position: relative;
   width: 70px;
   height: 70px;
-  border: 2px solid #FFFFFF;
+  border: 4px solid #c4c4c4;
   border-radius: 50%;
   margin: 0 auto;
   display: flex;
@@ -54,26 +54,26 @@
 .arrow {
   width: 2px;
   height: 15px;
-  background-color: #FFFFFF;
+  background-color: #c4c4c4;
   position: absolute;
-  top: 50%;
-  left: 50%;
+  top: 60%;
+  left: 60%;
   transform-origin: top;
   transform: translateX(-50%) translateY(-100%) rotate(0deg);
   transition: transform 0.5s ease-in-out;
 }
 
-.arrow::before {
+.arrow::after {
   content: "";
   width: 0;
   height: 0;
   border-left: 5px solid transparent;
   border-right: 5px solid transparent;
-  border-bottom: 10px solid #FFFFFF;
+  border-bottom: 10px solid #c4c4c4;
   position: absolute;
-  bottom: -5px;
+  bottom: -9px;
   left: -3px;
-  transform: rotate(65deg);
+  transform: rotate(180deg);
 }
 
 .direction-n,
