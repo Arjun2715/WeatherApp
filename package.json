@@ -13,12 +13,12 @@
     "apexcharts": "^3.42.0",
     "axios": "^1.5.0",
     "core-js": "^3.8.3",
-    "vue": "^3.2.13",
+    "vue": "^3.3.4",
     "vue-axios": "^3.5.2",
     "vue-custom-scrollbar": "^1.4.4",
     "vue-dragscroll": "^4.0.5",
     "vue-router": "^4.2.4",
-    "vuex": "^4.0.2"
+    "vuex": "^4.1.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.16",

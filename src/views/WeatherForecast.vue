@@ -6,6 +6,7 @@
           <div class="card sm:rounded-3xl lg:m-20 md:m-10 sm:m-5">
             <div class="grow">
               <div class="sm:flex flex-row-reverse">
+              
                 <div class="flex flex-col grow lg:px-20">
                   <div class="w-full p-5 mt-20">
                     <p class="text-2xl text-cyan-50">Weather Forecast</p>
@@ -118,13 +119,13 @@
 <script>
 import axios from "axios";
 import SideBar from "@/components/SideBar.vue";
-import TempGraph from "@/components/TempGraph.vue";
+import TempGraph from "@/components/TempGraph.vue"; 
 
 export default {
   name: "WeatherForecast",
   components: {
     SideBar,
-    TempGraph,
+    TempGraph, 
   },
   data() {
     return {
@@ -164,7 +165,7 @@ export default {
       // return ;
     },
     loadData() {
-      // let city = "tokyo";
+      //  let city = "Barcelona";
       axios
         .get(
           "https://api.weatherapi.com/v1/forecast.json?key=804c0854fbe7434bbc3123537233008&q=Barcelona&days=1&aqi=yes&alerts=yes"

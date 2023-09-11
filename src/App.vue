@@ -79,7 +79,7 @@ export default {
             this.imagePrompt +
             " " +
             this.dayOrNight  +
-            " in "  + 
+            " in "  +
             this.location
         )
         .then((response) => {
@@ -95,7 +95,8 @@ export default {
         });
     },
     loadDataForecast() {
-      // var city = "Barcelona"
+      // console.log($store.state.storedStrings[0]);
+      //  let city = "Barcelona"
       axios
         .get(
           "https://api.weatherapi.com/v1/forecast.json?key=804c0854fbe7434bbc3123537233008&q=Barcelona&days=1&aqi=yes&alerts=yes"
