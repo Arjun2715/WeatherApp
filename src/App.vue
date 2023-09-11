@@ -5,8 +5,13 @@
       class="body overflow-hidden  "
       :style="{ backgroundImage: `url('${getImageUrl}')` }"
     >
-      <WeatherForecast />
+    <div v-for="(str, index) in storedStrings" :key="index">
+      {{ this.city = str }}
+    </div>
+    <WeatherForecast :city="this.city"/>
+
       <!-- {{ this.data.current.condition.text }} -->
+       
     </div>
     <div v-else>
       <div class="wrapper">
@@ -34,7 +39,9 @@
 </template>
 
 <script>
-import axios from "axios";
+import axios from "axios"; 
+// import { useStore } from 'vuex';
+import { computed, inject } from 'vue';
 import WeatherForecast from "@/views/WeatherForecast.vue";
 // import HelloWorld from './components/HelloWorld.vue'
 export default {
@@ -44,6 +51,7 @@ export default {
     /* eslint-disable */
     WeatherForecast,
   },
+   
   data() {
     return {
       imgData: null,
@@ -53,6 +61,7 @@ export default {
       imagePrompt: "",
       dayOrNight: "",
       location: "",
+      city: "",
     };
   },
   mounted() {
@@ -61,11 +70,23 @@ export default {
       this.loadData();
     }, "500");
   },
+  setup() {
+    // Inject the 'store' instance provided globally
+    const store = inject('store');
+
+    // Retrieve the array of strings from the store using a getter
+    const storedStrings = computed(() => store.getters.getStoredStrings);
+
+    return {
+      storedStrings,
+    };
+  },
   methods: {
+   
     loadData() {
       this.imagePrompt = this.data.current.condition.text;
       this.location = this.data.location.name;
-
+      
       if (this.data.current.is_day) {
         this.dayOrNight = "Day";
       } else {
@@ -95,11 +116,10 @@ export default {
         });
     },
     loadDataForecast() {
-      // console.log($store.state.storedStrings[0]);
-      //  let city = "Barcelona"
+     this.city = this.storedStrings[0]
       axios
         .get(
-          "https://api.weatherapi.com/v1/forecast.json?key=804c0854fbe7434bbc3123537233008&q=Barcelona&days=1&aqi=yes&alerts=yes"
+          "https://api.weatherapi.com/v1/forecast.json?key=804c0854fbe7434bbc3123537233008&q="+this.city+"&days=1&aqi=yes&alerts=yes"
         )
         .then((response) => {
           this.data = response.data;

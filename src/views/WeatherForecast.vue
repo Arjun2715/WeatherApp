@@ -1,5 +1,6 @@
 <template>
   <div class="">
+    {{ this.city }}
     <div v-if="!this.loading" class="relative">
       <div class="absolute z-50 sm:overflow-y-auto overflow-x-scroll">
         <div class="h-screen w-screen md:overflow-hidden">
@@ -127,6 +128,9 @@ export default {
     SideBar,
     TempGraph, 
   },
+  props: {
+    city: String,
+  },
   data() {
     return {
       data: null,
@@ -168,7 +172,7 @@ export default {
       //  let city = "Barcelona";
       axios
         .get(
-          "https://api.weatherapi.com/v1/forecast.json?key=804c0854fbe7434bbc3123537233008&q=Barcelona&days=1&aqi=yes&alerts=yes"
+          "https://api.weatherapi.com/v1/forecast.json?key=804c0854fbe7434bbc3123537233008&q="+this.city+"&days=1&aqi=yes&alerts=yes"
         )
         .then((response) => {
           this.data = response.data;

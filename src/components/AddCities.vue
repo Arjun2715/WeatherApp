@@ -17,7 +17,10 @@
         <ul>
           <li v-for="(str, index) in storedStrings" :key="index">
             {{ str }}
-            <button @click="removeString(index)" class="bin card rounded-full px-2">
+            <button
+              @click="removeString(index)"
+              class="bin card rounded-full px-2"
+            >
               Remove
             </button>
           </li>
@@ -27,43 +30,36 @@
   </div>
 </template>
   
-  <script>
+<script>
+import { ref, computed } from 'vue';
+import { useStore } from 'vuex';
 export default {
-  data() {
+  setup() {
+    const store = useStore();
+    const inputText = ref('');
+    const storedStrings = computed(() => store.getters.getStoredStrings);
+
+    const addString = () => {
+      store.commit('ADD_STRING', inputText.value);
+      inputText.value = ''; // Clear the input field
+    };
+
+    const removeString = (index) => {
+      store.commit('REMOVE_STRING', index);
+    };
+    
     return {
-      inputText: "", // Input field for the string
-      storedStrings: [], // String retrieved from LocalStorage
+      inputText,
+      storedStrings,
+      addString,
+      removeString,
     };
   },
-  methods: {
-    addString() {
-      // Add the string to the array and save it to LocalStorage
-      if (this.inputText == "") {
-        this.inputText = "";
-      } else {
-        this.storedStrings.push(this.inputText);
-        this.saveStrings();
-        this.inputText = ""; // Clear the input field
-      }
-    },
-    removeString(index) {
-      // Remove a string from the array and update LocalStorage
-      this.storedStrings.splice(index, 1);
-      this.saveStrings();
-    },
-    saveStrings() {
-      // Save the array of strings to LocalStorage
-      localStorage.setItem("storedStrings", JSON.stringify(this.storedStrings));
-    },
-  },
-  mounted() {
-    // Load the array of strings from LocalStorage when the component is mounted
-    const storedStrings = localStorage.getItem("storedStrings");
-    if (storedStrings) {
-      this.storedStrings = JSON.parse(storedStrings);
-    }
-  },
-};
+  
+  methods:{
+   
+  }
+}
 </script>
   <style>
 .input-container {
