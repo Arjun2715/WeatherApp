@@ -3,7 +3,7 @@ import { createStore } from 'vuex';
 
 export default createStore({
   state: {
-    storedStrings: ["London",], // Initialize with an empty array
+    storedStrings: ["Madrid",], // Initialize with an empty array
   },
   mutations: {
     SET_STORED_STRINGS(state, strings) {

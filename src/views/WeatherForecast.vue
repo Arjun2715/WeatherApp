@@ -23,7 +23,6 @@
                     <img :src="this.data.current.condition.icon" alt="" />
                     <p class="text-xl text-cyan-50 flex self-center">
                       {{ this.data.location.name }},
-                      {{ this.data.location.region }},
                       {{ this.data.location.country }}
                       {{ this.date }}
                       {{ this.time }}
