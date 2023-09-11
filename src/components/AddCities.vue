@@ -13,7 +13,7 @@
     </div>
     <div>
       <div class="p-2">
-        <label>Stored Strings:</label>
+        <!-- <label>Stored Strings:</label> -->
         <ul>
           <li v-for="(str, index) in storedStrings" :key="index">
             {{ str }}

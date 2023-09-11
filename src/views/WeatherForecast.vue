@@ -7,8 +7,8 @@
             <div class="grow">
               <div class="sm:flex flex-row-reverse">
               
-                <div class="flex flex-col grow lg:px-20">
-                  <div class="w-full p-5 mt-20">
+                <div class="flex flex-col max-w-screen-lg sm:mx-auto">
+                  <div class=" p-5 mt-20">
                     <p class="text-2xl text-cyan-50">Weather Forecast</p>
                   </div>
                   <div class="text-6xl text-cyan-50 p-5">
