@@ -1,6 +1,6 @@
 <template>
   <div class="">
-    <!-- {{ this.city }} -->
+    <!-- {{ this.city }} -->  
     <div v-if="!this.loading" class="relative">
       <div class="absolute z-50 sm:overflow-y-auto overflow-x-scroll">
         <div class="h-screen w-screen md:overflow-hidden">

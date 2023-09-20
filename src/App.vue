@@ -94,7 +94,7 @@ export default {
         .get(
           "https://api.unsplash.com/search/photos/?client_id=oUd4FG2-casjWkPRoLWjbC1tic0Zgjyg3SDa7gSunlk&query=" +
             this.imagePrompt +
-            " " +
+            " weather " +
             this.dayOrNight  +
             " in "  +
             this.location
