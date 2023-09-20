@@ -14,26 +14,26 @@
        
     </div>
     <div v-else>
-      <div class="wrapper">
-        <div class="cloud">
-          <div class="cloud_left"></div>
-          <div class="cloud_right"></div>
+        <div class="wrapper">
+          <div class="cloud">
+            <div class="cloud_left"></div>
+            <div class="cloud_right"></div>
+          </div>
+          <div class="rain">
+            <div class="drop"></div>
+            <div class="drop"></div>
+            <div class="drop"></div>
+            <div class="drop"></div>
+            <div class="drop"></div>
+          </div>
+          <div class="surface">
+            <div class="hit"></div>
+            <div class="hit"></div>
+            <div class="hit"></div>
+            <div class="hit"></div>
+            <div class="hit"></div>
+          </div>
         </div>
-        <div class="rain">
-          <div class="drop"></div>
-          <div class="drop"></div>
-          <div class="drop"></div>
-          <div class="drop"></div>
-          <div class="drop"></div>
-        </div>
-        <div class="surface">
-          <div class="hit"></div>
-          <div class="hit"></div>
-          <div class="hit"></div>
-          <div class="hit"></div>
-          <div class="hit"></div>
-        </div>
-      </div>
     </div>
   </div>
 </template>
@@ -70,13 +70,9 @@ export default {
       this.loadData();
     }, "500");
   },
-  setup() {
-    // Inject the 'store' instance provided globally
-    const store = inject('store');
-
-    // Retrieve the array of strings from the store using a getter
-    const storedStrings = computed(() => store.getters.getStoredStrings);
-
+  setup() { 
+    const store = inject('store'); 
+    const storedStrings = computed(() => store.getters.getStoredStrings); 
     return {
       storedStrings,
     };
@@ -103,9 +99,10 @@ export default {
             " in "  +
             this.location
         )
+       
         .then((response) => {
           this.imgData = response.data.results;
-          // console.log(this.data);
+          console.log(this.data);
         })
         .catch(() => {
           console.error("ERROR");
@@ -113,10 +110,16 @@ export default {
         .finally(() => {
           this.loading = false;
           this.getImages();
+          console.log(this.imagePrompt +
+            " " +
+            this.dayOrNight  +
+            " in "  +
+            this.location);
         });
     },
     loadDataForecast() {
-     this.city = this.storedStrings[0]
+     this.city = this.storedStrings[this.storedStrings.length - 1];
+     console.log(this.city);
       axios
         .get(
           "https://api.weatherapi.com/v1/forecast.json?key=804c0854fbe7434bbc3123537233008&q="+this.city+"&days=1&aqi=yes&alerts=yes"
@@ -131,7 +134,7 @@ export default {
         .finally(() => {
           this.loading = false;
         });
-    },
+      },
     getImages() {
       const randomIndex = Math.floor(Math.random() * this.imgData.length);
       const randomUrl = this.imgData[randomIndex].urls.full;

@@ -1,5 +1,5 @@
 <template>
-  <div class="card rounded-3xl text-white">
+  <div v-if="loading" class="card rounded-3xl text-white">
     <div class="flex flex-col">
       <div class="w-auto md:min-w-[280px] sm:min-w-[280px] md:pt-3">
         <AddCitiesVue/>
@@ -101,6 +101,28 @@
       </div>
     </div>
   </div>
+  <div v-else>
+    <div class="wrapper">
+        <div class="cloud">
+          <div class="cloud_left"></div>
+          <div class="cloud_right"></div>
+        </div>
+        <div class="rain">
+          <div class="drop"></div>
+          <div class="drop"></div>
+          <div class="drop"></div>
+          <div class="drop"></div>
+          <div class="drop"></div>
+        </div>
+        <div class="surface">
+          <div class="hit"></div>
+          <div class="hit"></div>
+          <div class="hit"></div>
+          <div class="hit"></div>
+          <div class="hit"></div>
+        </div>
+      </div>
+  </div>
 </template>
 <script>
 import WindIndicator from "@/components/WindIndicator.vue";
@@ -117,6 +139,8 @@ export default {
   data() {
     return {
       city: "Barcelona",
+      loading: true,
+
     };
   },
 };
