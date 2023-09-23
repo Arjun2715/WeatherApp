@@ -117,7 +117,7 @@
   </div>
 </template>
 <script>
-import axios from "axios";
+// import axios from "axios";
 import SideBar from "@/components/SideBar.vue";
 import TempGraph from "@/components/TempGraph.vue"; 
 
@@ -129,10 +129,11 @@ export default {
   },
   props: {
     city: String,
+     data:Object,
   },
   data() {
     return {
-      data: null,
+      // data: null,
       loading: true,
       interval: null,
       date: null,
@@ -156,9 +157,10 @@ export default {
         second: "numeric",
       }).format();
     }, 1000);
+    this.loading = false;
   },
   mounted() {
-    this.loadData();
+    // this.loadData();
     this.currentTime();
   },
   methods: {
@@ -167,24 +169,24 @@ export default {
       this.date = now.toDateString();
       // return ;
     },
-    loadData() {
-      //  let city = "Barcelona";
-      axios
-        .get(
-          "https://api.weatherapi.com/v1/forecast.json?key=804c0854fbe7434bbc3123537233008&q="+this.city+"&days=1&aqi=yes&alerts=yes"
-        )
-        .then((response) => {
-          this.data = response.data;
-          // console.log(this.data);
-        })
-        .catch(() => {
-          console.error("ERROR");
-          // self.$router.push({ name: "Sign In" });
-        })
-        .finally(() => {
-          this.loading = false;
-        });
-    },
+    // loadData() {
+    //   //  let city = "Barcelona";
+    //   axios
+    //     .get(
+    //       "https://api.weatherapi.com/v1/forecast.json?key=804c0854fbe7434bbc3123537233008&q="+this.city+"&days=1&aqi=yes&alerts=yes"
+    //     )
+    //     .then((response) => {
+    //       this.data = response.data;
+    //       // console.log(this.data);
+    //     })
+    //     .catch(() => {
+    //       console.error("ERROR");
+    //       // self.$router.push({ name: "Sign In" });
+    //     })
+    //     .finally(() => {
+    //       this.loading = false;
+    //     });
+    // },
     uvScale() {
       let uvIndex = this.data.current.uv;
       switch (true) {

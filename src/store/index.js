@@ -1,4 +1,3 @@
-// store.js
 import { createStore } from 'vuex';
 
 export default createStore({
@@ -27,6 +26,11 @@ export default createStore({
       if (storedStrings) {
         commit('SET_STORED_STRINGS', JSON.parse(storedStrings));
       }
+    },
+    // Add an action to update storedStrings in both state and local storage
+    updateStoredStrings({ commit, state }, newStrings) {
+      commit("updateStoredStrings", newStrings);
+      localStorage.setItem("storedStrings", JSON.stringify(state.storedStrings));
     },
   },
   getters: {

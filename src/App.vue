@@ -8,10 +8,10 @@
     <div v-for="(str, index) in storedStrings" :key="index">
       {{ this.city = str }}
     </div>
-    <WeatherForecast :city="this.city"/>
+    <WeatherForecast :city="this.city" :data="this.data"/>
 
       <!-- {{ this.data.current.condition.text }} -->
-       
+
     </div>
     <div v-else>
         <div class="wrapper">
@@ -39,8 +39,8 @@
 </template>
 
 <script>
-import axios from "axios"; 
-// import { useStore } from 'vuex';
+import axios from "axios";
+//  import { store } from 'vuex';
 import { computed, inject } from 'vue';
 import WeatherForecast from "@/views/WeatherForecast.vue";
 // import HelloWorld from './components/HelloWorld.vue'
@@ -51,7 +51,7 @@ export default {
     /* eslint-disable */
     WeatherForecast,
   },
-   
+
   data() {
     return {
       imgData: null,
@@ -70,19 +70,19 @@ export default {
       this.loadData();
     }, "500");
   },
-  setup() { 
-    const store = inject('store'); 
-    const storedStrings = computed(() => store.getters.getStoredStrings); 
+  setup() {
+    const store = inject('store');
+    const storedStrings = computed(() => store.getters.getStoredStrings);
     return {
       storedStrings,
     };
   },
   methods: {
-   
+
     loadData() {
       this.imagePrompt = this.data.current.condition.text;
       this.location = this.data.location.name;
-      
+
       if (this.data.current.is_day) {
         this.dayOrNight = "Day";
       } else {
@@ -94,12 +94,12 @@ export default {
         .get(
           "https://api.unsplash.com/search/photos/?client_id=oUd4FG2-casjWkPRoLWjbC1tic0Zgjyg3SDa7gSunlk&query=" +
             this.imagePrompt +
-            " weather " +
+            " " +
             this.dayOrNight  +
             " in "  +
             this.location
         )
-       
+
         .then((response) => {
           this.imgData = response.data.results;
           console.log(this.data);
@@ -118,7 +118,7 @@ export default {
         });
     },
     loadDataForecast() {
-     this.city = this.storedStrings[this.storedStrings.length - 1];
+      this.city = "Barcelona";
      console.log(this.city);
       axios
         .get(
@@ -128,8 +128,8 @@ export default {
           this.data = response.data;
           // console.log(this.data);
         })
-        .catch(() => {
-          console.error("ERROR");
+        .catch((error) => {
+          console.error("ERROR"+ error.message);
         })
         .finally(() => {
           this.loading = false;

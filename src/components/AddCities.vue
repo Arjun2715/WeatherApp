@@ -8,7 +8,8 @@
         <div class="underline"></div>
       </div>
       <div class="flex self-center card rounded-full px-4 m-6">
-        <button class="" @click="addString">Add</button>
+        <!--Disabled button -->
+        <button disabled class="" @click="addString">Add</button>
       </div>
     </div>
     <div>
