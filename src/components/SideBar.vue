@@ -2,12 +2,19 @@
   <div v-if="loading" class="card rounded-3xl text-white">
     <div class="flex flex-col">
       <div class="w-auto md:min-w-[280px] sm:min-w-[280px] md:pt-3">
-        <AddCitiesVue/>
+        <!-- <AddCitiesVue/> -->
       </div>
-      <div class="hidden md:flex h-[150px] p-4 pt-7">
-        <p class="text-6xl">{{ this.data.current.temp_c }}º</p>
+      <div class="hidden md:flex justify-between h-[150px] p-4 pt-7 md:grow">
+        <label class="text-6xl">{{ this.data.current.temp_c }}º</label>
+        <div class="">
+          <div class="flex flex-col">
+          <label for="">Max Temp: {{ this.data.forecast.forecastday[0].day.maxtemp_c }} ºC</label>
+          <label for="">Min Temp: {{ this.data.forecast.forecastday[0].day.mintemp_c }} ºC</label>
+          <label for="">Avg Temp: {{ this.data.forecast.forecastday[0].day.avgtemp_c }} ºC</label>
+        </div>
+        </div>
       </div>
-      <div class="bg-[#FFFFFF10] rounded-3xl p-4 h-[100px] mb-1">
+      <div class="bg-[#FFFFFF20] rounded-3xl p-4 h-[100px] mb-1">
         <div class="flex flex-row justify-between">
           <div>
             <div class="flex">
@@ -27,7 +34,7 @@
           </div>
         </div>
       </div>
-      <div class="bg-[#FFFFFF10] rounded-3xl p-4 h-[100px] mb-1">
+      <div class="bg-[#FFFFFF20] rounded-3xl p-4  h-[100px] mb-1">
         <div class="flex flex-row justify-between">
           <div class="flex flex-col justify-between">
             <div class="flex flex-row justify-between">
@@ -48,7 +55,7 @@
           </div>
         </div>
       </div>
-      <div class="bg-[#FFFFFF10] rounded-3xl p-4 h-[300px] flex-1">
+      <div class="bg-[#FFFFFF20] rounded-3xl p-4 h-[300px] mb-1 flex-1">
         <div class="flex flex-row">
           <label class="flex-1"> Humidity </label>
           <label for="">{{ this.data.current.humidity }}%</label>
@@ -99,6 +106,9 @@
           <label for="">{{ this.data.current.vis_km }} Km</label>
         </div>
       </div>
+      <div>
+        <AirQuality :data="this.data.current.air_quality"/>
+      </div>
     </div>
   </div>
   <div v-else>
@@ -126,11 +136,12 @@
 </template>
 <script>
 import WindIndicator from "@/components/WindIndicator.vue";
-import AddCitiesVue from './AddCities.vue';
+import AirQuality from '@/components/AirQuality.vue';
 export default {
   components: {
     WindIndicator,
-    AddCitiesVue,
+    AirQuality
+    // AddCitiesVue,
 
   },
   props: {

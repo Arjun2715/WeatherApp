@@ -64,10 +64,10 @@ export default {
       city: "",
     };
   },
-  mounted() {
+  created() {
     this.loadDataForecast();
     setTimeout(() => {
-      this.loadData();
+      this.loadImaage();
     }, "500");
   },
   setup() {
@@ -79,7 +79,7 @@ export default {
   },
   methods: {
 
-    loadData() {
+    loadImaage() {
       this.imagePrompt = this.data.current.condition.text;
       this.location = this.data.location.name;
 
@@ -128,8 +128,8 @@ export default {
           this.data = response.data;
           // console.log(this.data);
         })
-        .catch((error) => {
-          console.error("ERROR"+ error.message);
+        .catch(() => {
+          // console.error("ERROR"+ error.message);
         })
         .finally(() => {
           this.loading = false;
