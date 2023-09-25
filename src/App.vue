@@ -118,7 +118,7 @@ export default {
         });
     },
     loadDataForecast() {
-      this.city = "Barcelona";
+      this.city = "New York";
      console.log(this.city);
       axios
         .get(

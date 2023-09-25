@@ -4,7 +4,7 @@
       id="myChart"
       width="400"
       height="100"
-      class="bg-[#FFFFFF0] rounded-[30px]"
+      class="bg-[#FFFFFF]"
     ></canvas>
   </div>
 </template>
