@@ -9,17 +9,17 @@
               <div class="sm:flex flex-row-reverse">
               
                 <div class="flex flex-col max-w-screen-lg sm:mx-auto">
-                  <div class=" p-5 mt-20">
+                  <div class=" p-5 mt-5">
                     <p class="text-2xl text-cyan-50">Weather Forecast</p>
                   </div>
-                  <div class="text-6xl text-cyan-50 p-5">
+                  <div class="text-6xl text-cyan-50 p-2">
                     <p class="md:hidden text-6xl">
                       {{ this.data.current.temp_c }}º
                     </p>
 
                     {{ this.data.current.condition.text }}
                   </div>
-                  <div class="w-full p-5 flex">
+                  <div class="w-full p-2 flex">
                     <img :src="this.data.current.condition.icon" alt="" />
                     <p class="text-xl text-cyan-50 flex self-center">
                       {{ this.data.location.name }},
@@ -49,7 +49,7 @@
                       </div>
                     </div>
                   </div>
-                  <div class="p-5">
+                  <div class="p-2">
                     <button class="card rounded-3xl p-2 w-auto">
                       <div class="flex flex-row">
                         <p class="text-white md:text-bas whitespace-nowrap">
@@ -81,9 +81,12 @@
                       </div>
                     </button>
                   </div>
-                  <div class="mt-5">
+                  <div class="mt-2">
                     <TempGraph :data="this.data" />
                   </div>
+                  <div class="mt-2">
+                    <TempChart :data="this.data" />
+                  </div>  
                 </div>
                 <SideBar :data="this.data" />
               </div>
@@ -120,12 +123,14 @@
 // import axios from "axios";
 import SideBar from "@/components/SideBar.vue";
 import TempGraph from "@/components/TempGraph.vue"; 
+import TempChart from "@/components/TempChart.vue"; 
 
 export default {
   name: "WeatherForecast",
   components: {
     SideBar,
     TempGraph, 
+    TempChart
   },
   props: {
     city: String,

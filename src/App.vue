@@ -122,7 +122,7 @@ export default {
      console.log(this.city);
       axios
         .get(
-          "https://api.weatherapi.com/v1/forecast.json?key=804c0854fbe7434bbc3123537233008&q="+this.city+"&days=1&aqi=yes&alerts=yes"
+          "https://api.weatherapi.com/v1/forecast.json?key=804c0854fbe7434bbc3123537233008&q="+this.city+"&days=7&aqi=yes&alerts=yes"
         )
         .then((response) => {
           this.data = response.data;
