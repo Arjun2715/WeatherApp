@@ -4,7 +4,7 @@
       id="myChart"
       width="400"
       height="100"
-      class="bg-[#FFFFFF]"
+      class="bg-[#FFFFFF] rounded-[30px]"
     ></canvas>
   </div>
 </template>
@@ -52,11 +52,10 @@ export default {
           label: "Temperature in ºC",
           data: tempData,
           fill: false,
-           borderColor: "#FFA500",
-        
+          borderColor: "#FFA500",
           tension: 0.4,
           borderJoinStyle: "round",
-          beginAtZero: true,
+          beginAtZero: false,
         },
       ],
     };

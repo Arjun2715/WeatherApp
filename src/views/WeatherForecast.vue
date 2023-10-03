@@ -1,15 +1,14 @@
 <template>
   <div class="">
-    <!-- {{ this.city }} -->  
+    <!-- {{ this.city }} -->
     <div v-if="!this.loading" class="relative">
       <div class="absolute z-50 sm:overflow-y-auto overflow-x-scroll">
         <div class="h-screen w-screen md:overflow-hidden">
           <div class="card sm:rounded-3xl lg:m-20 md:m-10 sm:m-5">
             <div class="grow">
               <div class="sm:flex flex-row-reverse">
-              
                 <div class="flex flex-col max-w-screen-lg sm:mx-auto">
-                  <div class=" p-5 mt-5">
+                  <div class="p-5 mt-5">
                     <p class="text-2xl text-cyan-50">Weather Forecast</p>
                   </div>
                   <div class="text-6xl text-cyan-50 p-2">
@@ -49,7 +48,7 @@
                       </div>
                     </div>
                   </div>
-                  <div class="p-2">
+                  <!-- <div class="p-2">
                     <button class="card rounded-3xl p-2 w-auto">
                       <div class="flex flex-row">
                         <p class="text-white md:text-bas whitespace-nowrap">
@@ -80,13 +79,13 @@
                         </svg>
                       </div>
                     </button>
+                  </div> -->
+                  <div class="mt-2">
+                    <TempChart :data="this.data" />
                   </div>
                   <div class="mt-2">
                     <TempGraph :data="this.data" />
                   </div>
-                  <div class="mt-2">
-                    <TempChart :data="this.data" />
-                  </div>  
                 </div>
                 <SideBar :data="this.data" />
               </div>
@@ -122,19 +121,19 @@
 <script>
 // import axios from "axios";
 import SideBar from "@/components/SideBar.vue";
-import TempGraph from "@/components/TempGraph.vue"; 
-import TempChart from "@/components/TempChart.vue"; 
+import TempGraph from "@/components/TempGraph.vue";
+import TempChart from "@/components/TempChart.vue";
 
 export default {
   name: "WeatherForecast",
   components: {
     SideBar,
-    TempGraph, 
-    TempChart
+    TempGraph,
+    TempChart,
   },
   props: {
     city: String,
-     data:Object,
+    data: Object,
   },
   data() {
     return {

@@ -1,5 +1,4 @@
 <template>
-  <div>
     <div
       v-if="!this.loading"
       class="body overflow-hidden  "
@@ -35,7 +34,6 @@
           </div>
         </div>
     </div>
-  </div>
 </template>
 
 <script>
@@ -118,7 +116,7 @@ export default {
         });
     },
     loadDataForecast() {
-      this.city = "New York";
+      this.city = "Barcelona";
      console.log(this.city);
       axios
         .get(

@@ -1,7 +1,7 @@
 <template>
   <div v-if="loading" class="card rounded-3xl text-white">
     <div class="flex flex-col">
-      <div class="w-auto md:min-w-[280px] sm:min-w-[280px] md:pt-3">
+      <div class="w-auto  md:pt-3">
         <!-- <AddCitiesVue/> -->
       </div>
       <div class="hidden md:flex justify-between h-[150px] p-4 pt-7 md:grow">
