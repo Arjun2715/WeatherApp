@@ -6,7 +6,7 @@
       :style="{ backgroundImage: `url('${getImageUrl}')` }"
     >
     <div v-for="(str, index) in storedStrings" :key="index">
-      {{ this.city = str }}
+    <!--   {{ this.city = str }} -->
     </div>
     <WeatherForecast :city="this.city" :data="this.data"/>
 
