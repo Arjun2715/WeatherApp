@@ -4,8 +4,8 @@
       <div class="w-auto  md:pt-3">
         <!-- <AddCitiesVue/> -->
       </div>
-      <div class="hidden md:flex justify-between h-[150px] p-4 pt-7 md:grow">
-        <label class="text-6xl">{{ this.data.current.temp_c }}º</label>
+      <div class="hidden md:flex lh:w-[400px] justify-between h-[150px] p-4 pt-7 md:grow">
+        <label class="text-6xl">{{ this.data.current.temp_c }}ºC</label>
         <div class="">
           <div class="flex flex-col">
           <label for="">Max Temp: {{ this.data.forecast.forecastday[0].day.maxtemp_c }} ºC</label>

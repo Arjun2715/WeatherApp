@@ -87,7 +87,9 @@
                     <TempGraph :data="this.data" />
                   </div>
                 </div>
-                <SideBar :data="this.data" />
+                <div class="">
+                  <SideBar :data="this.data" />
+                </div>
               </div>
             </div>
           </div>
