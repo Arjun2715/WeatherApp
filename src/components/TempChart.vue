@@ -4,7 +4,7 @@
       id="myChart"
       width="400"
       height="100"
-      class="bg-[#FFFFFF] rounded-[30px]"
+      class="card rounded-[30px]"
     ></canvas>
   </div>
 </template>
@@ -33,7 +33,6 @@ export default {
 
       return timeString;
     },
-    
   },
   mounted() {
     // console.log("component Mounted");
@@ -44,7 +43,7 @@ export default {
       labels.push(this.formatTimeFromDate(item.time));
       tempData.push(item.temp_c);
     });
-   
+
     const data = {
       labels: labels,
       datasets: [
@@ -56,12 +55,28 @@ export default {
           tension: 0.4,
           borderJoinStyle: "round",
           beginAtZero: false,
+          backgroundColor: "rgba(255, 255, 255)",
+          pointHoverRadius: 5,
         },
       ],
     };
     const myChart = new Chart(ctx, {
       type: "line",
       data: data,
+      options: {
+        plugins: {
+          legend: {
+            labels: {
+              color: "white",
+              // This more specific font property overrides the global property
+              font: {
+                fontColor: '#FFFFFF',
+              },
+            },
+          },
+        },
+      },
+
       //       options: {
       //     scales: {
       //       y: {
