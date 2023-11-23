@@ -4,6 +4,7 @@
       class="body overflow-hidden  "
       :style="{ backgroundImage: `url('${getImageUrl}')` }"
     >
+     <p class="text-red-500 w-full text-center hover:text-white">in development</p>
     <div v-for="(str, index) in storedStrings" :key="index">
     <!--   {{ this.city = str }} -->
     </div>
@@ -91,11 +92,11 @@ export default {
       axios
         .get(
           "https://api.unsplash.com/search/photos/?client_id=oUd4FG2-casjWkPRoLWjbC1tic0Zgjyg3SDa7gSunlk&query=" +
-            this.imagePrompt +
-            " " +
-            this.dayOrNight  +
-            " in "  +
-            this.location
+            // this.imagePrompt +
+            // " " +
+            this.dayOrNight 
+            //  + " in "  +
+            // this.location
         )
 
         .then((response) => {
