@@ -1,18 +1,18 @@
-<template>
+<template> 
   <div class="">
     <!-- {{ this.city }} -->
     <div v-if="!this.loading" class="relative">
-      <div class="absolute z-50 sm:overflow-y-auto overflow-x-scroll">
-        <div class="h-screen w-screen md:overflow-hidden">
-          <div class="card sm:rounded-3xl lg:m-20 md:m-10 sm:m-5">
-            <div class="grow">
-              <div class="sm:flex flex-row-reverse">
-                <div class="flex flex-col max-w-screen-lg sm:mx-auto">
+      <div class="absolute z-50 sm:overflow-y-auto overflow-x-scroll h-screen w-screen">
+        <!-- <div class=" overflow-scroll"> -->
+          <div class="card xl:rounded-3xl xl:m-20">
+            <!-- <div class="grow"> -->
+              <div class="md:flex md:flex-col lg:flex-row-reverse">
+                <div class="flex flex-col max-w-screen-lg md:mx-auto">
                   <div class="p-5 mt-5">
                     <p class="text-2xl text-cyan-50">Weather Forecast</p>
                   </div>
                   <div class="text-6xl text-cyan-50 p-2">
-                    <p class="md:hidden text-6xl">
+                    <p class="lg:hidden text-6xl">
                       {{ this.data.current.temp_c }}º
                     </p>
 
@@ -83,15 +83,15 @@
                   <div class="mt-2">
                     <TempChart :data="this.data" />
                   </div>
-                  <div class="mt-2">
+                  <div class="mt-2 max-w-max">
                     <TempGraph :data="this.data" />
                   </div>
                 </div>
-                <div class="">
+                <div class="h-full">
                   <SideBar :data="this.data" />
                 </div>
-              </div>
-            </div>
+              <!-- </div> -->
+            <!-- </div> -->
           </div>
         </div>
       </div>

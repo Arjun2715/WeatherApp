@@ -1,5 +1,5 @@
 <template>
-  <div class="text-white flex-grow overflow-hidden px-4 card rounded-3xl my-2">
+  <div class="text-white flex-row overflow-hidden px-4 card rounded-3xl my-2 ">
   <div class="flex flex-row opacity-50">
     <svg
       width="24px"
