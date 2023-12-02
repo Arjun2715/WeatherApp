@@ -4,7 +4,8 @@
       id="myChart"
       width="400"
       height="100"
-      class="card rounded-[30px]"
+      style="font-size: 16px;"
+      class="card rounded-[30px] text-lg p-3 overflow-scroll"
     ></canvas>
   </div>
 </template>
@@ -41,7 +42,8 @@ export default {
     const tempData = [];
     this.data.forecast.forecastday[0].hour.forEach((item) => {
       labels.push(this.formatTimeFromDate(item.time));
-      tempData.push(item.temp_c);
+      // Math.round
+      tempData.push((item.temp_c));
     });
 
     const data = {
@@ -56,7 +58,7 @@ export default {
           borderJoinStyle: "round",
           beginAtZero: false,
           backgroundColor: "rgba(255, 255, 255)",
-          pointHoverRadius: 5,
+          pointHoverRadius: 8,
         },
       ],
     };

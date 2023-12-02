@@ -13,6 +13,7 @@
                   </div>
                   <div class="text-6xl text-cyan-50 p-2">
                     <p class="lg:hidden text-6xl">
+                      
                       {{ this.data.current.temp_c }}º
                     </p>
 
@@ -264,6 +265,7 @@ export default {
 
       return this.tempDescription;
     },
+    
   },
 };
 </script>
