@@ -3,7 +3,7 @@
     <!-- {{ this.city }} -->
     <div v-if="!this.loading" class="relative">
       <div
-        class="absolute sm:overflow-y-auto overflow-x-scroll h-screen w-screen z-0"
+        class="absolute sm:overflow-y-auto overflow-x-hidden h-screen w-screen z-0"
       >
         <!-- <div class=" overflow-scroll"> -->
         <div class="card xl:rounded-3xl xl:m-20">
@@ -110,7 +110,7 @@
         <div
           class="absolute inset-0 top-96 flex items-center justify-center z-10"
         >
-          <LogIn  @cancelClicked="handleCancel"/>
+          <LogIn @cancelClicked="handleCancel" />
         </div>
       </div>
     </div>
@@ -297,7 +297,7 @@ export default {
     },
     handleCancel(newData) {
       this.loginHidden = newData;
-    }
+    },
   },
 };
 </script>
