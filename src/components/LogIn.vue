@@ -1,5 +1,9 @@
 <template> 
-    <form class=" bg-gray-400  max-w-screen-sm mx-auto p-4 rounded-xl z-50">
+<div class=" bg-gray-400  w-[400px] mx-auto p-4 rounded-xl z-50">
+  <h1 class="text-2xl flex self-center">
+    Login
+  </h1>
+   <form >
       <div class="mb-5">
         <label
           for="email"
@@ -51,7 +55,15 @@
       >
         Submit
       </button>
+      <button 
+        @click="cancel()"
+        class="text-white  font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center hover:text-cyan-300"
+      >
+        Cancel
+      </button>
     </form> 
+</div>
+     
 </template>
 
 <script>

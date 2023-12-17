@@ -1,10 +1,10 @@
 <template>
     <div
       v-if="!this.loading"
-      class="body overflow-hidden  "
+      class="body overflow-hidden -z-20 "
       :style="{ backgroundImage: `url('${getImageUrl}')` }"
     >
-     <p class="text-red-500 w-full text-center hover:text-white">in development</p>
+     <!-- <p class="text-red-500 w-full text-center hover:text-white">in development</p> -->
     <!--  <div v-for="(str, index) in storedStrings" :key="index">
      {{ this.city = str }} 
     </div>-->
