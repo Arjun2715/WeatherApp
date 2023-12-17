@@ -7,6 +7,11 @@
           <div class="card xl:rounded-3xl xl:m-20">
             <!-- <div class="grow"> -->
               <div class="md:flex md:flex-col lg:flex-row-reverse">
+                <div>
+                  <button class="card rounded-tr-3xl  rounded-bl-lg m- p-3  text-cyan-50 text-xl">
+                    Login
+                  </button>
+                </div>
                 <div class="flex flex-col max-w-screen-lg md:mx-auto">
                   <div class="p-5 mt-5">
                     <p class="text-2xl text-cyan-50">Weather Forecast</p>
