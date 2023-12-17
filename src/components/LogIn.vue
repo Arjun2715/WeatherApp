@@ -1,6 +1,5 @@
-<template>
-  <div>
-    <form class="max-w-sm mx-auto">
+<template> 
+    <form class=" bg-gray-400  max-w-screen-sm mx-auto p-4 rounded-xl z-50">
       <div class="mb-5">
         <label
           for="email"
@@ -10,9 +9,9 @@
         <input
           type="email"
           id="email"
-          v-model="user"
+          v-model="email"
           class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-          placeholder="name@flowbite.com"
+          placeholder="name@example.com"
           required
         />
       </div>
@@ -52,16 +51,15 @@
       >
         Submit
       </button>
-    </form>
-  </div>
+    </form> 
 </template>
 
 <script>
 export default {
-    data: {
-        return(){
-            email: null;
-            password: null;
+    data() {
+        return{
+            email:  null,
+            password: null,
         }
     }
     , 

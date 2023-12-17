@@ -5,11 +5,11 @@
       :style="{ backgroundImage: `url('${getImageUrl}')` }"
     >
      <p class="text-red-500 w-full text-center hover:text-white">in development</p>
-    <div v-for="(str, index) in storedStrings" :key="index">
-    <!--   {{ this.city = str }} -->
-    </div>
-    <WeatherForecast :city="this.city" :data="this.data"/>
-
+    <!--  <div v-for="(str, index) in storedStrings" :key="index">
+     {{ this.city = str }} 
+    </div>-->
+    <WeatherForecast :city="this.city" :data="this.data"/> 
+<!-- <router-view/> -->
       <!-- {{ this.data.current.condition.text }} -->
 
     </div>

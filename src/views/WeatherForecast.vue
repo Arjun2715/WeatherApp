@@ -2,13 +2,13 @@
   <div class="">
     <!-- {{ this.city }} -->
     <div v-if="!this.loading" class="relative">
-      <div class="absolute z-50 sm:overflow-y-auto overflow-x-scroll h-screen w-screen">
+      <div class="absolute sm:overflow-y-auto overflow-x-scroll h-screen w-screen z-[1]">
         <!-- <div class=" overflow-scroll"> -->
           <div class="card xl:rounded-3xl xl:m-20">
             <!-- <div class="grow"> -->
               <div class="md:flex md:flex-col lg:flex-row-reverse">
                 <div>
-                  <button class="card rounded-tr-3xl  rounded-bl-lg m- p-3  text-cyan-50 text-xl">
+                  <button @click="Auth()" class="card rounded-tr-3xl  rounded-bl-lg m- p-3  text-cyan-50 text-xl">
                     Login
                   </button>
                 </div>
@@ -101,6 +101,9 @@
           </div>
         </div>
       </div>
+      <div v-if="loginHidden" class="z-[99]">
+        <LogIn/>
+      </div>
     </div>
     <div v-else class="flex flex-row justify-center">
       <div class="wrapper">
@@ -128,9 +131,10 @@
 </template>
 <script>
 // import axios from "axios";
+import LogIn from "@/components/LogIn.vue";
 import SideBar from "@/components/SideBar.vue";
 import TempGraph from "@/components/TempGraph.vue";
-import TempChart from "@/components/TempChart.vue";
+import TempChart from "@/components/TempChart.vue"; 
 
 export default {
   name: "WeatherForecast",
@@ -138,6 +142,7 @@ export default {
     SideBar,
     TempGraph,
     TempChart,
+    LogIn,
   },
   props: {
     city: String,
@@ -152,6 +157,8 @@ export default {
       time: null,
       uvDescription: "",
       tempDescription: "",
+      isAuthenticated: false  ,
+      loginHidden: false,
     };
   },
   beforeUnmount() {
@@ -271,6 +278,14 @@ export default {
       return this.tempDescription;
     },
     
+    Auth()  { 
+      if(this.loginHidden) {
+        this.loginHidden = false;
+      }else{
+        this.loginHidden =true;
+          console.log("already logged In");
+      }
+    }
   },
 };
 </script>
