@@ -105,12 +105,12 @@
           </div>
         </div>
       </div>
-      <div v-if="loginHidden">
+      <div v-if="!loginHidden">
         <div class="absolute inset-0 bg-[#0000008c] w-screen h-screen"></div>
         <div
           class="absolute inset-0 top-96 flex items-center justify-center z-10"
         >
-          <LogIn />
+          <LogIn  @cancelClicked="handleCancel"/>
         </div>
       </div>
     </div>
@@ -167,7 +167,7 @@ export default {
       uvDescription: "",
       tempDescription: "",
       isAuthenticated: false,
-      loginHidden: false,
+      loginHidden: true,
     };
   },
   beforeUnmount() {
@@ -295,6 +295,9 @@ export default {
         console.log("already logged In");
       }
     },
+    handleCancel(newData) {
+      this.loginHidden = newData;
+    }
   },
 };
 </script>

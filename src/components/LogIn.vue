@@ -76,6 +76,12 @@ export default {
     }
     , 
     methods: {
+      cancel(){
+        const newData= true;
+        this.$emit('cancelClicked', newData);
+        console.log('cancelClicked');
+
+      },
         login(){
             console.log(this.data.email);
             console.log(this.data.password);
