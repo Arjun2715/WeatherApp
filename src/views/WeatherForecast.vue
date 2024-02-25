@@ -1,64 +1,55 @@
-<template>
+<template> 
   <div class="">
     <!-- {{ this.city }} -->
     <div v-if="!this.loading" class="relative">
-      <div
-        class="absolute sm:overflow-y-auto overflow-x-hidden h-screen w-screen z-0"
-      >
+      <div class="absolute z-50 sm:overflow-y-auto overflow-x-scroll h-screen w-screen">
         <!-- <div class=" overflow-scroll"> -->
-        <div class="card xl:rounded-3xl xl:m-20">
-          <!-- <div class="grow"> -->
-          <div class="md:flex md:flex-col lg:flex-row-reverse">
-            <div>
-              <button
-                @click="Auth()"
-                class="card rounded-tr-3xl rounded-bl-lg m- p-3 text-cyan-50 text-xl"
-              >
-                Login
-              </button>
-            </div>
-            <div class="flex flex-col max-w-screen-lg md:mx-auto">
-              <div class="p-5 mt-5">
-                <p class="text-2xl text-cyan-50">Weather Forecast</p>
-              </div>
-              <div class="text-6xl text-cyan-50 p-2">
-                <p class="lg:hidden text-6xl">
-                  {{ this.data.current.temp_c }}º
-                </p>
+          <div class="card xl:rounded-3xl xl:m-20">
+            <!-- <div class="grow"> -->
+              <div class="md:flex md:flex-col lg:flex-row-reverse">
+                <div class="flex flex-col max-w-screen-lg md:mx-auto">
+                  <div class="p-5 mt-5">
+                    <p class="text-2xl text-cyan-50">Weather Forecast</p>
+                  </div>
+                  <div class="text-6xl text-cyan-50 p-2">
+                    <p class="lg:hidden text-6xl">
+                      
+                      {{ this.data.current.temp_c }}º
+                    </p>
 
-                {{ this.data.current.condition.text }}
-              </div>
-              <div class="w-full p-2 flex">
-                <img :src="this.data.current.condition.icon" alt="" />
-                <p class="text-xl text-cyan-50 flex self-center">
-                  {{ this.data.location.name }},
-                  {{ this.data.location.country }}
-                  {{ this.date }}
-                  {{ this.time }}
-
-                  <!-- Spain, Barcelona, Friday, 3 Sep, 2023 8:45AM  last_updated location -->
-                </p>
-              </div>
-              <div class="p-5">
-                <div class="text-lg text-cyan-50">
-                  <div>
                     {{ this.data.current.condition.text }}
-                    with {{ this.uvScale() }} <br />
-                    Temp {{ this.data.current.temp_c }}ºC,
-                    {{ this.tempScale() }} Winds
                   </div>
-                  <div class="flex flex-row">
-                    <div class="text-5xl w-30 mr-1">
-                      {{ this.data.current.wind_degree }}º
-                    </div>
-                    <div class="mt-1">
-                      {{ this.data.current.wind_dir }} at an avg of
-                      {{ this.data.current.wind_kph }}km/h.
+                  <div class="w-full p-2 flex">
+                    <img :src="this.data.current.condition.icon" alt="" />
+                    <p class="text-xl text-cyan-50 flex self-center">
+                      {{ this.data.location.name }},
+                      {{ this.data.location.country }}
+                      {{ this.date }}
+                      {{ this.time }}
+
+                      <!-- Spain, Barcelona, Friday, 3 Sep, 2023 8:45AM  last_updated location -->
+                    </p>
+                  </div>
+                  <div class="p-5">
+                    <div class="text-lg text-cyan-50">
+                      <div>
+                        {{ this.data.current.condition.text }}
+                        with {{ this.uvScale() }} <br />
+                        Temp {{ this.data.current.temp_c }}ºC,
+                        {{ this.tempScale() }} Winds
+                      </div>
+                      <div class="flex flex-row">
+                        <div class="text-5xl w-30 mr-1">
+                          {{ this.data.current.wind_degree }}º
+                        </div>
+                        <div class="mt-1">
+                          {{ this.data.current.wind_dir }} at an avg of
+                          {{ this.data.current.wind_kph }}km/h.
+                        </div>
+                      </div>
                     </div>
                   </div>
-                </div>
-              </div>
-              <!-- <div class="p-2">
+                  <!-- <div class="p-2">
                     <button class="card rounded-3xl p-2 w-auto">
                       <div class="flex flex-row">
                         <p class="text-white md:text-bas whitespace-nowrap">
@@ -90,27 +81,19 @@
                       </div>
                     </button>
                   </div> -->
-              <div class="mt-2">
-                <TempChart :data="this.data" />
-              </div>
-              <div class="mt-2 max-w-max">
-                <TempGraph :data="this.data" />
-              </div>
-            </div>
-            <div class="h-full">
-              <SideBar :data="this.data" />
-            </div>
-            <!-- </div> -->
+                  <div class="mt-2">
+                    <TempChart :data="this.data" />
+                  </div>
+                  <div class="mt-2 max-w-max">
+                    <TempGraph :data="this.data" />
+                  </div>
+                </div>
+                <div class="h-full">
+                  <SideBar :data="this.data" />
+                </div>
+              <!-- </div> -->
             <!-- </div> -->
           </div>
-        </div>
-      </div>
-      <div v-if="!loginHidden">
-        <div class="absolute inset-0 bg-[#0000008c] w-screen h-screen"></div>
-        <div
-          class="absolute inset-0 top-96 flex items-center justify-center z-10"
-        >
-          <LogIn @cancelClicked="handleCancel" />
         </div>
       </div>
     </div>
@@ -140,7 +123,6 @@
 </template>
 <script>
 // import axios from "axios";
-import LogIn from "@/components/LogIn.vue";
 import SideBar from "@/components/SideBar.vue";
 import TempGraph from "@/components/TempGraph.vue";
 import TempChart from "@/components/TempChart.vue";
@@ -151,7 +133,6 @@ export default {
     SideBar,
     TempGraph,
     TempChart,
-    LogIn,
   },
   props: {
     city: String,
@@ -166,8 +147,6 @@ export default {
       time: null,
       uvDescription: "",
       tempDescription: "",
-      isAuthenticated: false,
-      loginHidden: true,
     };
   },
   beforeUnmount() {
@@ -286,18 +265,7 @@ export default {
 
       return this.tempDescription;
     },
-
-    Auth() {
-      if (this.loginHidden) {
-        this.loginHidden = false;
-      } else {
-        this.loginHidden = true;
-        console.log("already logged In");
-      }
-    },
-    handleCancel(newData) {
-      this.loginHidden = newData;
-    },
+    
   },
 };
 </script>

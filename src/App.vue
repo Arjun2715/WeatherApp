@@ -1,15 +1,15 @@
 <template>
     <div
       v-if="!this.loading"
-      class="body overflow-hidden -z-20 "
+      class="body overflow-hidden  "
       :style="{ backgroundImage: `url('${getImageUrl}')` }"
     >
-     <!-- <p class="text-red-500 w-full text-center hover:text-white">in development</p> -->
-    <!--  <div v-for="(str, index) in storedStrings" :key="index">
-     {{ this.city = str }} 
-    </div>-->
-    <WeatherForecast :city="this.city" :data="this.data"/> 
-<!-- <router-view/> -->
+     <p class="text-red-500 w-full text-center hover:text-white">in development</p>
+    <div v-for="(str, index) in storedStrings" :key="index">
+    <!--   {{ this.city = str }} -->
+    </div>
+    <WeatherForecast :city="this.city" :data="this.data"/>
+
       <!-- {{ this.data.current.condition.text }} -->
 
     </div>
