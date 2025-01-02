@@ -57,8 +57,8 @@
         v-if="!loginHidden"
         class="absolute inset-0 flex items-center justify-center"
       >
-        <div class="absolute inset-0 bg-black opacity-50"></div>
-        <LogIn @cancelClicked="handleCancel" class="z-10" />
+        <!-- <div class="absolute inset-0 bg-black opacity-50"></div>
+        <LogIn @cancelClicked="handleCancel" class="z-10" /> -->
       </div>
 
     </div>
