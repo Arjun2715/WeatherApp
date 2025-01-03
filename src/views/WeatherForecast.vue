@@ -141,7 +141,7 @@ export default {
     currentTime() {
       const now = new Date();
       this.date = now.toDateString();
-      // return ;
+      // return ; 
     },
     // loadData() {
     //   //  let city = "Barcelona";
