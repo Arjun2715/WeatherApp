@@ -158,7 +158,7 @@ export default {
     //       // self.$router.push({ name: "Sign In" });
     //     })
     //     .finally(() => {
-    //       this.loading = false;
+    //       this.loading = false; 
     //     });
     // },
     uvScale() {
