@@ -85,14 +85,11 @@
     </div>
   </div>
 </template>
-
-
 <script>
 // import axios from "axios";
 import SideBar from "@/components/SideBar.vue";
 import TempGraph from "@/components/TempGraph.vue";
 import TempChart from "@/components/TempChart.vue";
-
 export default {
   name: "WeatherForecast",
   components: {
@@ -152,7 +149,7 @@ export default {
     //       this.data = response.data;
     //       // console.log(this.data);
     //     })
-    //     .catch(() => {
+    //     .catch(() => {1
     //       console.error("ERROR");
     //       // self.$router.push({ name: "Sign In" });
     //     })
@@ -188,7 +185,6 @@ export default {
     },
     tempScale() {
       let temperature = this.data.current.temp_c;
-
       switch (true) {
         case temperature < 0:
           this.tempDescription =
@@ -228,7 +224,6 @@ export default {
             "Dangerously hot take extreme precautions to avoid heat-related illnesses.";
           break;
       }
-
       return this.tempDescription;
     },
   },
