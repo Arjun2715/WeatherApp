@@ -47,9 +47,9 @@
                 <TempGraph :data="data" />
               </div>
             </div>
-            <div class="h-auto flex"> 
-                <SideBar :data="data" />
-              </div> 
+            <div class="h-auto flex">
+              <SideBar :data="data" />
+            </div>
           </div>
         </div>
       </div>
@@ -60,7 +60,6 @@
         <!-- <div class="absolute inset-0 bg-black opacity-50"></div>
         <LogIn @cancelClicked="handleCancel" class="z-10" /> -->
       </div>
-
     </div>
     <div v-else class="flex flex-col justify-center items-center h-screen">
       <div class="wrapper">
@@ -141,7 +140,7 @@ export default {
     currentTime() {
       const now = new Date();
       this.date = now.toDateString();
-      // return ; 
+      // return ;
     },
     // loadData() {
     //   //  let city = "Barcelona";
@@ -158,7 +157,7 @@ export default {
     //       // self.$router.push({ name: "Sign In" });
     //     })
     //     .finally(() => {
-    //       this.loading = false; 
+    //       this.loading = false;
     //     });
     // },
     uvScale() {
@@ -232,7 +231,6 @@ export default {
 
       return this.tempDescription;
     },
-    
   },
 };
 </script>
