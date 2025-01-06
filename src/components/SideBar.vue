@@ -2,13 +2,26 @@
   <div v-if="loading" class="card rounded-3xl text-white h-full flex flex-col">
     <div class="flex-1 flex flex-col">
       <div class="w-auto md:pt-3"></div>
-      <div class="hidden md:flex lg:w-[400px] space-x-4 justify-between h-[150px] p-4 pt-7 md:grow">
-        <label class="text-6xl">{{ roundTemp(this.data.current.temp_c) }}ºC</label>
+      <div
+        class="hidden md:flex lg:w-[400px] space-x-4 justify-between h-[150px] p-4 pt-7 md:grow"
+      >
+        <label class="text-6xl"
+          >{{ roundTemp(this.data.current.temp_c) }}ºC</label
+        >
         <div class="">
           <div class="flex flex-col">
-            <label>Max Temp: {{ this.data.forecast.forecastday[0].day.maxtemp_c }} ºC</label>
-            <label>Min Temp: {{ this.data.forecast.forecastday[0].day.mintemp_c }} ºC</label>
-            <label>Avg Temp: {{ this.data.forecast.forecastday[0].day.avgtemp_c }} ºC</label>
+            <label
+              >Max Temp:
+              {{ this.data.forecast.forecastday[0].day.maxtemp_c }} ºC</label
+            >
+            <label
+              >Min Temp:
+              {{ this.data.forecast.forecastday[0].day.mintemp_c }} ºC</label
+            >
+            <label
+              >Avg Temp:
+              {{ this.data.forecast.forecastday[0].day.avgtemp_c }} ºC</label
+            >
           </div>
         </div>
       </div>
@@ -37,11 +50,15 @@
           <div class="flex flex-col justify-between">
             <div class="flex flex-row justify-between">
               <label class="mr-4">Sunrise</label>
-              <label class="whitespace-nowrap">{{ this.data.forecast.forecastday[0].astro.sunrise }}</label>
+              <label class="whitespace-nowrap">{{
+                this.data.forecast.forecastday[0].astro.sunrise
+              }}</label>
             </div>
             <div class="flex flex-row">
               <label class="mr-4">Sunset</label>
-              <label class="whitespace-nowrap">{{ this.data.forecast.forecastday[0].astro.sunset }}</label>
+              <label class="whitespace-nowrap">{{
+                this.data.forecast.forecastday[0].astro.sunset
+              }}</label>
             </div>
           </div>
           <div>sun</div>
@@ -89,7 +106,7 @@
         </div>
       </div>
       <div class="mt-1">
-        <AirQuality :data="this.data.current.air_quality"/>
+        <AirQuality :data="this.data.current.air_quality" />
       </div>
     </div>
   </div>
@@ -97,13 +114,12 @@
 
 <script>
 import WindIndicator from "@/components/WindIndicator.vue";
-import AirQuality from '@/components/AirQuality.vue';
+import AirQuality from "@/components/AirQuality.vue";
 export default {
   components: {
     WindIndicator,
-    AirQuality
+    AirQuality,
     // AddCitiesVue,
-
   },
   props: {
     data: Object,
@@ -112,13 +128,12 @@ export default {
     return {
       city: "Barcelona",
       loading: true,
-
     };
   },
   methods: {
-    roundTemp(temp){
+    roundTemp(temp) {
       return Math.round(temp);
-    }
+    },
   },
 };
 </script>
