@@ -1,120 +1,67 @@
 <template>
-  <div class="">
-    <!-- {{ this.city }} -->
-    <div v-if="!this.loading" class="relative">
+  <div class="h-screen w-screen flex flex-col">
+    <div v-if="!loading" class="relative h-full w-full">
       <div
-        class="absolute sm:overflow-y-auto overflow-x-hidden h-screen w-screen z-0"
+        class="absolute inset-0 z-0 flex flex-col lg:flex-row overflow-hidden"
       >
-        <!-- <div class=" overflow-scroll"> -->
-        <div class="card xl:rounded-3xl xl:m-20">
-          <!-- <div class="grow"> -->
-          <div class="md:flex md:flex-col lg:flex-row-reverse">
-            <div>
-              <button
-                @click="Auth()"
-                class="card rounded-tr-3xl rounded-bl-lg m- p-3 text-cyan-50 text-xl"
-              >
-                Login
-              </button>
-            </div>
-            <div class="flex flex-col max-w-screen-lg md:mx-auto">
-              <div class="p-5 mt-5">
-                <p class="text-2xl text-cyan-50">Weather Forecast</p>
+        <div class="card xl:rounded-3xl xl:m-10 flex-grow overflow-hidden">
+          <div class="flex flex-col lg:flex-row-reverse h-full">
+            <div
+              class="flex flex-col justify-between max-w-screen-lg mx-auto p-5"
+            >
+              <p class="text-2xl text-cyan-50">Weather Forecast</p>
+              <div class="text-6xl text-cyan-50">
+                <p class="lg:hidden text-6xl">{{ data.current.temp_c }}º</p>
+                {{ data.current.condition.text }}
               </div>
-              <div class="text-6xl text-cyan-50 p-2">
-                <p class="lg:hidden text-6xl">
-                  {{ this.data.current.temp_c }}º
-                </p>
-
-                {{ this.data.current.condition.text }}
-              </div>
-              <div class="w-full p-2 flex">
-                <img :src="this.data.current.condition.icon" alt="" />
-                <p class="text-xl text-cyan-50 flex self-center">
-                  {{ this.data.location.name }},
-                  {{ this.data.location.country }}
-                  {{ this.date }}
-                  {{ this.time }}
-
-                  <!-- Spain, Barcelona, Friday, 3 Sep, 2023 8:45AM  last_updated location -->
+              <div class="w-full flex items-center space-x-2">
+                <img
+                  :src="data.current.condition.icon"
+                  class="w-12 h-12"
+                  alt=""
+                />
+                <p class="text-xl text-cyan-50">
+                  {{ data.location.name }}, {{ data.location.country }} -
+                  {{ date }} {{ time }}
                 </p>
               </div>
-              <div class="p-5">
-                <div class="text-lg text-cyan-50">
-                  <div>
-                    {{ this.data.current.condition.text }}
-                    with {{ this.uvScale() }} <br />
-                    Temp {{ this.data.current.temp_c }}ºC,
-                    {{ this.tempScale() }} Winds
+              <div class="text-lg text-cyan-50">
+                <p>{{ data.current.condition.text }} with {{ uvScale() }}</p>
+                <p>
+                  Temp: {{ data.current.temp_c }}ºC, {{ tempScale() }} Winds
+                </p>
+                <div class="flex items-center">
+                  <div class="text-5xl mr-2">
+                    {{ data.current.wind_degree }}º
                   </div>
-                  <div class="flex flex-row">
-                    <div class="text-5xl w-30 mr-1">
-                      {{ this.data.current.wind_degree }}º
-                    </div>
-                    <div class="mt-1">
-                      {{ this.data.current.wind_dir }} at an avg of
-                      {{ this.data.current.wind_kph }}km/h.
-                    </div>
-                  </div>
+                  <p>
+                    {{ data.current.wind_dir }} at avg
+                    {{ data.current.wind_kph }}km/h.
+                  </p>
                 </div>
               </div>
-              <!-- <div class="p-2">
-                    <button class="card rounded-3xl p-2 w-auto">
-                      <div class="flex flex-row">
-                        <p class="text-white md:text-bas whitespace-nowrap">
-                          See Details
-                        </p>
-                        <svg
-                          width="24px"
-                          height="24px"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                          <g
-                            id="SVGRepo_tracerCarrier"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                          ></g>
-                          <g id="SVGRepo_iconCarrier">
-                            <path
-                              d="M7 17L17 7M17 7H8M17 7V16"
-                              stroke="#ffffff"
-                              stroke-width="2"
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
-                            ></path>
-                          </g>
-                        </svg>
-                      </div>
-                    </button>
-                  </div> -->
               <div class="mt-2">
-                <TempChart :data="this.data" />
+                <TempChart :data="data" />
               </div>
               <div class="mt-2 max-w-max">
-                <TempGraph :data="this.data" />
+                <TempGraph :data="data" />
               </div>
             </div>
-            <div class="h-full">
-              <SideBar :data="this.data" />
-            </div>
-            <!-- </div> -->
-            <!-- </div> -->
+            <div class="h-auto flex"> 
+                <SideBar :data="data" />
+              </div> 
           </div>
         </div>
       </div>
-      <div v-if="!loginHidden">
-        <div class="absolute inset-0 bg-[#0000008c] w-screen h-screen"></div>
-        <div
-          class="absolute inset-0 top-96 flex items-center justify-center z-10"
-        >
-          <LogIn @cancelClicked="handleCancel" />
-        </div>
+      <div
+        v-if="!loginHidden"
+        class="absolute inset-0 flex items-center justify-center"
+      >
+        <div class="absolute inset-0 bg-black opacity-50"></div>
+        <LogIn @cancelClicked="handleCancel" class="z-10" />
       </div>
     </div>
-    <div v-else class="flex flex-row justify-center">
+    <div v-else class="flex flex-col justify-center items-center h-screen">
       <div class="wrapper">
         <div class="cloud">
           <div class="cloud_left"></div>
@@ -138,6 +85,8 @@
     </div>
   </div>
 </template>
+
+
 <script>
 // import axios from "axios";
 import LogIn from "@/components/LogIn.vue";
