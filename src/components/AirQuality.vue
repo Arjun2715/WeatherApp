@@ -54,7 +54,7 @@
     <div class="flex flex-row">
       <label class="flex-1"> PM10 </label>
       <label for="">{{ this.data.pm10 }}µg/m3</label>
-    </div> 
+    </div>
   </div>
 </template>
 
@@ -65,7 +65,7 @@ export default {
   },
   data() {
     return {};
-  }, 
+  },
   methods: {
     calculateAQI(aqiValue) {
       // Define the AQI index ranges and corresponding ratings and suggestions
@@ -116,9 +116,9 @@ export default {
       // Find the AQI range that matches the current AQI value
       const matchedRange = aqiRanges.find(
         (range) => aqiValue >= range.min && aqiValue <= range.max
-      ); 
-        return matchedRange.rating;  
-    }
+      );
+      return matchedRange.rating;
+    },
   },
 };
 </script>
