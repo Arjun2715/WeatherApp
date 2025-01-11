@@ -97,7 +97,7 @@
         <hr />
         <div class="flex flex-row">
           <label class="flex-1">Clouds</label>
-          <label>{{ this.data.current.cloud }}%</label>1
+          <label>{{ this.data.current.cloud }}%</label>
         </div>
         <hr />
         <div class="flex flex-row">
@@ -111,6 +111,7 @@
     </div>
   </div>
 </template>
+
 <script>
 import WindIndicator from "@/components/WindIndicator.vue";
 import AirQuality from "@/components/AirQuality.vue";

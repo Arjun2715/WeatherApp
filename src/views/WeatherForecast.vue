@@ -149,7 +149,7 @@ export default {
     //       this.data = response.data;
     //       // console.log(this.data);
     //     })
-    //     .catch(() => {1
+    //     .catch(() => {
     //       console.error("ERROR");
     //       // self.$router.push({ name: "Sign In" });
     //     })
