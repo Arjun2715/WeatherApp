@@ -9,9 +9,7 @@
       {{ this.city = str }}
     </div> -->
     <WeatherForecast :city="this.city" :data="this.data"/>
-
       <!-- {{ this.data.current.condition.text }} -->
-
     </div>
     <div v-else>
         <div class="wrapper">
@@ -36,7 +34,6 @@
         </div>
     </div>
 </template>
-
 <script>
 import axios from "axios";
 //  import { store } from 'vuex';
@@ -50,7 +47,6 @@ export default {
     /* eslint-disable */
     WeatherForecast,
   },
-
   data() {
     return {
       imgData: null,
@@ -77,17 +73,14 @@ export default {
     };
   },
   methods: {
-
     loadImaage() {
       this.imagePrompt = this.data.current.condition.text;
       this.location = this.data.location.name;
-
       if (this.data.current.is_day) {
         this.dayOrNight = "Day";
       } else {
         this.dayOrNight = "Night";
       }
-
       this.region = this.data.location.country;
       axios
         .get(
@@ -98,7 +91,6 @@ export default {
             //  + " in "  +
             // this.location
         )
-
         .then((response) => {
           this.imgData = response.data.results;
           console.log(this.data);
@@ -138,7 +130,6 @@ export default {
       const randomIndex = Math.floor(Math.random() * this.imgData.length);
       const randomUrl = this.imgData[randomIndex].urls.full;
       console.log(randomIndex + "  " + randomUrl);
-
       return (this.getImageUrl = randomUrl);
     },
   },
