@@ -225,7 +225,7 @@ export default {
           break;
       }
       return this.tempDescription;
-    },
+    }, 
   },
 };
 </script>
