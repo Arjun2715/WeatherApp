@@ -30,7 +30,6 @@
     </div>
   </div>
 </template>
-  
 <script>
 import { ref, computed } from 'vue';
 import { useStore } from 'vuex';
@@ -39,16 +38,13 @@ export default {
     const store = useStore();
     const inputText = ref('');
     const storedStrings = computed(() => store.getters.getStoredStrings);
-
     const addString = () => {
       store.commit('ADD_STRING', inputText.value);
       inputText.value = ''; // Clear the input field
     };
-
     const removeString = (index) => {
       store.commit('REMOVE_STRING', index);
     };
-    
     return {
       inputText,
       storedStrings,
@@ -56,9 +52,7 @@ export default {
       removeString,
     };
   },
-  
   methods:{
-   
   }
 }
 </script>
@@ -68,7 +62,6 @@ export default {
   margin: 20px auto;
   width: fit-content;
 }
-
 .input-container input[type="text"] {
   font-size: 20px;
   width: 100%;
@@ -78,7 +71,6 @@ export default {
   background-color: transparent;
   outline: none;
 }
-
 .input-container .label {
   position: absolute;
   top: 0;
@@ -87,14 +79,12 @@ export default {
   transition: all 0.3s ease;
   pointer-events: none;
 }
-
 .input-container input[type="text"]:focus ~ .label,
 .input-container input[type="text"]:valid ~ .label {
   top: -20px;
   font-size: 16px;
   color: #c7c7c7;
 }
-
 .input-container .underline {
   position: absolute;
   bottom: 0;
@@ -105,7 +95,6 @@ export default {
   transform: scaleX(0);
   transition: all 0.3s ease;
 }
-
 .input-container input[type="text"]:focus ~ .underline,
 .input-container input[type="text"]:valid ~ .underline {
   transform: scaleX(1);
