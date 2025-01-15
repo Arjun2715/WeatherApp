@@ -31,19 +31,19 @@
   </div>
 </template>
 <script>
-import { ref, computed } from 'vue';
-import { useStore } from 'vuex';
+import { ref, computed } from "vue";
+import { useStore } from "vuex";
 export default {
   setup() {
     const store = useStore();
-    const inputText = ref('');
+    const inputText = ref("");
     const storedStrings = computed(() => store.getters.getStoredStrings);
     const addString = () => {
-      store.commit('ADD_STRING', inputText.value);
-      inputText.value = ''; // Clear the input field
+      store.commit("ADD_STRING", inputText.value);
+      inputText.value = ""; // Clear the input field
     };
     const removeString = (index) => {
-      store.commit('REMOVE_STRING', index);
+      store.commit("REMOVE_STRING", index);
     };
     return {
       inputText,
@@ -52,9 +52,8 @@ export default {
       removeString,
     };
   },
-  methods:{
-  }
-}
+  methods: {},
+};
 </script>
   <style>
 .input-container {
