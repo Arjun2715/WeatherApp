@@ -111,7 +111,6 @@
     </div>
   </div>
 </template>
-
 <script>
 import WindIndicator from "@/components/WindIndicator.vue";
 import AirQuality from "@/components/AirQuality.vue";
