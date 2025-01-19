@@ -12,7 +12,6 @@
       </svg>
       <label for="">24-hour forecast</label>
     </div>
-
     <div class="flex flex-row space-x-10 overflow-x-auto">
       <div
         v-for="(item, index) in data.forecast.forecastday[0].hour"
@@ -40,19 +39,15 @@ export default {
   props: {
     data: Object, // this.data.forecast.forecastday[0].hour
   },
-
   methods: {
     formatTimeFromDate(dateString) {
       // Parse the date string into a Date object
       const date = new Date(dateString);
-
       // Extract the hours and minutes
       const hours = date.getHours().toString().padStart(2, "0");
       const minutes = date.getMinutes().toString().padStart(2, "0");
-
       // Construct the time string in the HH:MM format
       const timeString = `${hours}:${minutes}`;
-
       return timeString;
     },
   },
