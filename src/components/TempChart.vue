@@ -4,15 +4,13 @@
       id="myChart"
       width="400"
       height="100"
-      style="font-size: 16px;"
+      style="font-size: 16px"
       class="card rounded-[30px] text-lg p-3 overflow-scroll"
     ></canvas>
   </div>
 </template>
-
 <script>
 import Chart from "chart.js/auto";
-
 export default {
   props: {
     data: Object,
@@ -24,14 +22,11 @@ export default {
     formatTimeFromDate(dateString) {
       // Parse the date string into a Date object
       const date = new Date(dateString);
-
       // Extract the hours and minutes
       const hours = date.getHours().toString().padStart(2, "0");
       const minutes = date.getMinutes().toString().padStart(2, "0");
-
       // Construct the time string in the HH:MM format
       const timeString = `${hours}:${minutes}`;
-
       return timeString;
     },
   },
@@ -43,9 +38,8 @@ export default {
     this.data.forecast.forecastday[0].hour.forEach((item) => {
       labels.push(this.formatTimeFromDate(item.time));
       // Math.round
-      tempData.push((item.temp_c));
+      tempData.push(item.temp_c);
     });
-
     const data = {
       labels: labels,
       datasets: [
@@ -72,13 +66,12 @@ export default {
               color: "white",
               // This more specific font property overrides the global property
               font: {
-                fontColor: '#FFFFFF',
+                fontColor: "#FFFFFF",
               },
             },
           },
         },
       },
-
       //       options: {
       //     scales: {
       //       y: {
@@ -91,6 +84,5 @@ export default {
   },
 };
 </script>
-
 <style>
 </style>
