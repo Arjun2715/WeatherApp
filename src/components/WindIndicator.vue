@@ -1,40 +1,35 @@
 <template>
-    <div class="wind-indicator">
-      <div class="compass">
-        <div class="direction-n">N</div>
-        <div class="direction-e">E</div>
-        <div class="direction-w">W</div>
-        <div class="direction-s">S</div>
-        <div class="arrow" :style="arrowRotation"></div>
-      </div>
+  <div class="wind-indicator">
+    <div class="compass">
+      <div class="direction-n">N</div>
+      <div class="direction-e">E</div>
+      <div class="direction-w">W</div>
+      <div class="direction-s">S</div>
+      <div class="arrow" :style="arrowRotation"></div>
     </div>
-  </template>
-  
-  
+  </div>
+</template>
   <script>
-  export default {
-    props: {
-      wind_degree: Number,
-      wind_dir: String,
+export default {
+  props: {
+    wind_degree: Number,
+    wind_dir: String,
+  },
+  computed: {
+    windDirection() {
+      return this.wind_dir;
     },
-    computed: {
-      
-      windDirection() {
-        return this.wind_dir;
-      },
-      arrowRotation() {
-        return `transform: rotate(${this.wind_degree}deg)`;
-      },
+    arrowRotation() {
+      return `transform: rotate(${this.wind_degree}deg)`;
     },
-  };
-  </script>
-  
+  },
+};
+</script>
   <style scoped>
-  .wind-indicator {
+.wind-indicator {
   text-align: center;
   font-family: Arial, sans-serif;
 }
-
 .compass {
   position: relative;
   width: 70px;
@@ -46,11 +41,9 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  position: relative; 
+  position: relative;
   opacity: 80%;
-
 }
-
 .arrow {
   width: 2px;
   height: 15px;
@@ -62,7 +55,6 @@
   transform: translateX(-50%) translateY(-100%) rotate(0deg);
   transition: transform 0.5s ease-in-out;
 }
-
 .arrow::after {
   content: "";
   width: 0;
@@ -75,7 +67,6 @@
   left: -3px;
   transform: rotate(180deg);
 }
-
 .direction-n,
 .direction-e,
 .direction-w,
@@ -85,30 +76,24 @@
   font-size: 10px;
   opacity: 80%;
 }
-
 .direction-n {
   top: 0px;
   left: 50%;
   transform: translateX(-50%);
 }
-
 .direction-e {
   top: 50%;
   left: calc(100% - 10px);
   transform: translateY(-50%);
 }
-
 .direction-w {
   top: 50%;
   left: 1px;
   transform: translateY(-50%);
 }
-
 .direction-s {
   bottom: 1px;
   left: 50%;
   transform: translateX(-50%);
 }
-
-  </style>
-  
+</style>
