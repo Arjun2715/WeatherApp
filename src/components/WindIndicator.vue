@@ -9,7 +9,8 @@
     </div>
   </div>
 </template>
-  <script>
+
+<script>
 export default {
   props: {
     wind_degree: Number,
@@ -25,11 +26,13 @@ export default {
   },
 };
 </script>
-  <style scoped>
+
+<style scoped>
 .wind-indicator {
   text-align: center;
   font-family: Arial, sans-serif;
 }
+
 .compass {
   position: relative;
   width: 70px;
@@ -41,20 +44,21 @@ export default {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  position: relative;
   opacity: 80%;
 }
+
 .arrow {
   width: 2px;
   height: 15px;
   background-color: #c4c4c4;
   position: absolute;
-  top: 60%;
-  left: 60%;
-  transform-origin: top;
-  transform: translateX(-50%) translateY(-100%) rotate(0deg);
+  top: 50%; /* Center vertically */
+  left: 50%; /* Center horizontally */
+  transform-origin: bottom; /* Rotate from the bottom */
+  transform: translateX(-50%) translateY(-100%) rotate(0deg); /* Adjust position */
   transition: transform 0.5s ease-in-out;
 }
+
 .arrow::after {
   content: "";
   width: 0;
@@ -67,6 +71,7 @@ export default {
   left: -3px;
   transform: rotate(180deg);
 }
+
 .direction-n,
 .direction-e,
 .direction-w,
@@ -76,24 +81,28 @@ export default {
   font-size: 10px;
   opacity: 80%;
 }
+
 .direction-n {
   top: 0px;
   left: 50%;
   transform: translateX(-50%);
 }
+
 .direction-e {
   top: 50%;
   left: calc(100% - 10px);
   transform: translateY(-50%);
 }
+
 .direction-w {
   top: 50%;
   left: 1px;
   transform: translateY(-50%);
 }
+
 .direction-s {
   bottom: 1px;
   left: 50%;
   transform: translateX(-50%);
 }
-</style>
+</style>  
