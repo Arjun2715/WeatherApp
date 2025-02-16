@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-[#FFFFFF20] rounded-3xl p-4 flex-1">
+  <div class="bg-[#FFFFFF20] rounded-3xl p-4 flex-1 h-auto">
     <div class="flex flex-row">
       <label class="flex-1">AQI</label>
       <div class="flex flex-row">
