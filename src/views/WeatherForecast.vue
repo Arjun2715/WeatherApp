@@ -60,6 +60,7 @@
         <div class="absolute inset-0 bg-black opacity-50"></div>
         <LogIn @cancelClicked="handleCancel" class="z-10" />
       </div>
+
     </div>
     <div v-else class="flex flex-col justify-center items-center h-screen">
       <div class="wrapper">
@@ -89,7 +90,6 @@
 
 <script>
 // import axios from "axios";
-import LogIn from "@/components/LogIn.vue";
 import SideBar from "@/components/SideBar.vue";
 import TempGraph from "@/components/TempGraph.vue";
 import TempChart from "@/components/TempChart.vue";
@@ -100,7 +100,6 @@ export default {
     SideBar,
     TempGraph,
     TempChart,
-    LogIn,
   },
   props: {
     city: String,
@@ -115,8 +114,6 @@ export default {
       time: null,
       uvDescription: "",
       tempDescription: "",
-      isAuthenticated: false,
-      loginHidden: true,
     };
   },
   beforeUnmount() {
@@ -235,18 +232,7 @@ export default {
 
       return this.tempDescription;
     },
-
-    Auth() {
-      if (this.loginHidden) {
-        this.loginHidden = false;
-      } else {
-        this.loginHidden = true;
-        console.log("already logged In");
-      }
-    },
-    handleCancel(newData) {
-      this.loginHidden = newData;
-    },
+    
   },
 };
 </script>
